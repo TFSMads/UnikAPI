@@ -1,0 +1,2 @@
+rootProject.name = "UnikAPI-Core"
+
