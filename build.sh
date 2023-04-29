@@ -2,7 +2,7 @@ rm -rf merge
 mkdir merge
 
 for d in */ ; do
-	echo d
+	echo $d
     	if [ -f "$d\build.bat" ]; then
         	echo CALL: $d/build.bat
         	cd $d
@@ -15,7 +15,7 @@ cd merge
 mkdir temp
 
 for f in *.jar ; do
-	echo f
+	echo $f
     	cd temp
 	jar -xf ../$f
 	cd ..
