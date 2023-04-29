@@ -1,0 +1,17 @@
+name: Build UnikAPI
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Build Script
+        run: ./build.sh
+      - name: Upload Artifact To Workflow
+        uses: actions/upload-artifact@v1
+        with:
+          name: UnikAPI
+          path: merge/UnikAPI.jar
