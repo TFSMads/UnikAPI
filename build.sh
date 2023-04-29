@@ -3,10 +3,10 @@ mkdir merge
 
 for d in */ ; do
 	echo $d
-    	if [ -f "$d\build.bat" ]; then
-        	echo CALL: $d/build.bat
+    	if [ -f "$d\build.sh" ]; then
+        	echo CALL: $d/build.sh
         	cd $d
-        	./build.bat
+        	./build.sh
         	cd ..
    	fi
 done
