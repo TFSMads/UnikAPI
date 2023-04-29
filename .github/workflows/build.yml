@@ -8,10 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Run Build Script
-        run: /build.sh
+        run: 
+          chmod +x /build.sh
+          bash build.sh
+        shell: bash
       - name: Upload Artifact To Workflow
         uses: actions/upload-artifact@v1
         with:
           name: UnikAPI
           path: merge/UnikAPI.jar
+          
