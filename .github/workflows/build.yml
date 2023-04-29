@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Build Script
-        run: build.sh
+        run: /build.sh
       - name: Upload Artifact To Workflow
         uses: actions/upload-artifact@v1
         with:
