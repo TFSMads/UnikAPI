@@ -26,5 +26,5 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: UnikAPI
-          path: ${GITHUB_WORKSPACE}/merge/UnikAPI.jar
+          path: merge/UnikAPI.jar
           
