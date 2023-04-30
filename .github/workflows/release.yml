@@ -1,0 +1,61 @@
+name: Build and Release UnikAPI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 8
+      - run: echo "JAVA_8=$JAVA_HOME" >> $GITHUB_ENV
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 17
+      - run: echo "JAVA_17=$JAVA_HOME" >> $GITHUB_ENV    
+      - uses: actions/checkout@v2
+      - name: Run Build Script
+        run: | 
+          chmod +x ${GITHUB_WORKSPACE}/build.sh
+          ${GITHUB_WORKSPACE}/build.sh
+        shell: bash
+      - name: Upload Artifact To Workflow
+        uses: actions/upload-artifact@v1
+        with:
+          name: UnikAPI
+          path: merge/UnikAPI.jar
+      - name: Get Release Version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+            path: 'info.json'
+            prop_path: 'version'
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: v${{steps.version.outputs.prop}}
+          release_name: UnikAPI ${{steps.version.outputs.prop}}
+          body: |
+            Dette release er et auto genereret release.
+          draft: false
+          prerelease: false
+      - name: Upload Artifact To Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: merge/UnikAPI.jar
+          asset_name: UnikAPI.jar
+          asset_content_type: application/jar
+          
