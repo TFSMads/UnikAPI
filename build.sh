@@ -5,9 +5,9 @@ echo "$PWD"
 echo "${GITHUB_WORKSPACE}"
 
 for d in */ ; do
-	echo "$d\build.sh"
-    	if [ -f "$d\build.sh" ]; then
-        	echo CALL: $d/build.sh
+	echo "${d}build.sh"
+    	if [ -f "${d}build.sh" ]; then
+        	echo CALL: ${d}build.sh
         	cd $d
         	./build.sh
         	cd ..
