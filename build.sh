@@ -1,8 +1,11 @@
 rm -rf merge
 mkdir merge
 
+echo "$PWD"
+echo "${GITHUB_WORKSPACE}"
+
 for d in */ ; do
-	echo $d
+	echo "$d\build.sh"
     	if [ -f "$d\build.sh" ]; then
         	echo CALL: $d/build.sh
         	cd $d
