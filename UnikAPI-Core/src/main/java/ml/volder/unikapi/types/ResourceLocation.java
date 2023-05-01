@@ -1,23 +1,22 @@
 package ml.volder.unikapi.types;
 
 public class ResourceLocation {
+    public static final String DEFAULT_RESOURCE_DOMAIN = "unikapi";
+
     protected final String resourceDomain;
     protected final String resourcePath;
 
-    protected ResourceLocation(int p_i45928_1_, String... resourceName)
-    {
-        this.resourceDomain = isEmpty(resourceName[0]) ? "minecraft" : resourceName[0].toLowerCase();
-        this.resourcePath = resourceName[1];
-    }
-
     public ResourceLocation(String resourceName)
     {
-        this(0, splitObjectName(resourceName));
+        String[] splitResourceName = splitObjectName(resourceName);
+        this.resourceDomain = splitResourceName[0];
+        this.resourcePath = splitResourceName[1];
     }
 
-    public ResourceLocation(String resourceDomainIn, String resourcePathIn)
+    public ResourceLocation(String resourceDomain, String resourcePath)
     {
-        this(0, new String[] {resourceDomainIn, resourcePathIn});
+        this.resourceDomain = resourceDomain;
+        this.resourcePath = resourcePath;
     }
 
     /**
@@ -27,7 +26,7 @@ public class ResourceLocation {
     protected static String[] splitObjectName(String toSplit)
     {
         String[] astring = new String[] {null, toSplit};
-        int i = toSplit.indexOf(58);
+        int i = toSplit.indexOf(':');
 
         if (i >= 0)
         {
@@ -49,7 +48,7 @@ public class ResourceLocation {
 
     public String getResourceDomain()
     {
-        return this.resourceDomain;
+        return this.resourceDomain == null ? DEFAULT_RESOURCE_DOMAIN : this.resourceDomain;
     }
 
     public String toString()
@@ -70,13 +69,13 @@ public class ResourceLocation {
         else
         {
             ResourceLocation resourcelocation = (ResourceLocation)p_equals_1_;
-            return this.resourceDomain.equals(resourcelocation.resourceDomain) && this.resourcePath.equals(resourcelocation.resourcePath);
+            return this.getResourceDomain().equals(resourcelocation.getResourceDomain()) && this.getResourcePath().equals(resourcelocation.getResourcePath());
         }
     }
 
     public int hashCode()
     {
-        return 31 * this.resourceDomain.hashCode() + this.resourcePath.hashCode();
+        return 31 * this.getResourceDomain().hashCode() + this.getResourcePath().hashCode();
     }
 
     private boolean isEmpty(final CharSequence cs) {
