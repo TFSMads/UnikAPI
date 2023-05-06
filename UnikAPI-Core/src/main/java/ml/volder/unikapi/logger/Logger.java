@@ -9,6 +9,10 @@ public interface Logger {
     void warning(String string);
     void severe(String string);
 
+    default void debug(String string) {
+        //TODO if debug is enabled!
+        info(string);
+    }
 
 
 }

@@ -249,6 +249,7 @@ public class Laby4DrawAPI implements DrawAPI {
       return;
     Stack stack = getRenderStack();
     stack.scale((float) scale, (float) scale, 0);
+    //Laby.references().glStateBridge().enableCull();
     ItemStack itemStack = ((DefaultReferenceStorage)Laby4Loader.referenceStorageAccessor()).unikItemStackFactory().create(material.getNamespace(), material.getPath(
         MinecraftAPI.getAPI().isLegacy()), 1, itemDamage == 0 ? material.getItemDamage(itemDamage) : itemDamage);
     //TODO fiks så blocks ikke er mørke og så chest ikke ser mærklig ud.
@@ -260,6 +261,8 @@ public class Laby4DrawAPI implements DrawAPI {
         (int) (x / scale),
         (int) (y / scale)
     );
+    //Laby.references().glStateBridge().disableCull();
+
     stack.scale((float) (1.0F / scale), (float) (1.0F / scale), 0);
   }
 

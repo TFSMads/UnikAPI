@@ -107,7 +107,7 @@ public class Laby4KeyMapper extends KeyMapper {
 
   @Override
   public char getChar(@NotNull Key key) {
-    return net.labymod.api.client.gui.screen.key.mapper.KeyMapper.getCharacter(convert(key));
+    return key.getCharacter();
   }
 
   @Override

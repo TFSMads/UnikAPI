@@ -5,4 +5,6 @@ chmod +x ./gradlew
 cp build/libs/UnikAPI-Core-1.0-all.jar ../merge/UnikAPI-Core.jar
 mkdir ../UnikApi-Laby4/core/libs/
 cp build/libs/UnikAPI-Core-1.0-all.jar ../UnikApi-Laby4/core/libs/UnikAPI-Core.jar
+mkdir ../UnikApi-Laby3/libs/
+cp build/libs/UnikAPI-Core-1.0-all.jar ../UnikApi-Laby3/libs/UnikAPI-Core.jar
 
