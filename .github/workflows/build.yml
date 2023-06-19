@@ -14,12 +14,12 @@ jobs:
     steps:
       - uses: actions/setup-java@v1
         with:
-          java-version: 8
-      - run: echo "JAVA_8=$JAVA_HOME" >> $GITHUB_ENV
-      - uses: actions/setup-java@v1
-        with:
           java-version: 17
       - run: echo "JAVA_17=$JAVA_HOME" >> $GITHUB_ENV    
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 8
+      - run: echo "JAVA_8=$JAVA_HOME" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - name: Run Build Script
         run: | 
