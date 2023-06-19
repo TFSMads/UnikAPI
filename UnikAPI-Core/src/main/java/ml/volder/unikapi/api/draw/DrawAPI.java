@@ -1,6 +1,8 @@
 package ml.volder.unikapi.api.draw;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.api.minecraft.MinecraftAPI;
 import ml.volder.unikapi.types.Material;
 import ml.volder.unikapi.types.ResourceLocation;
@@ -293,8 +295,10 @@ public interface DrawAPI {
 
     //endregion
 
+    ApiProvider<DrawAPI> apiProvider = new ApiProvider<>("DrawAPI");
+
     static DrawAPI getAPI() {
-        return ApiManager.getAPI("DrawAPI", "ml.volder.unikapi.api.draw.impl", DrawAPI.class);
+        return ApiManager.getAPI(apiProvider, "ml.volder.unikapi.api.draw.impl", ApiReferenceStorage::getDrawAPI, DrawAPI.class);
     }
 
 }

@@ -1,6 +1,8 @@
 package ml.volder.unikapi.event.events.opensignevent;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.wrappers.guiscreen.WrappedGuiScreen;
 import ml.volder.unikapi.event.*;
 import ml.volder.unikapi.wrappers.tileentitysign.WrappedTileEntitySign;
@@ -39,10 +41,12 @@ public class OpenSignEvent extends Event implements Cancellable {
         return eventImpl != null;
     }
 
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("OpenSignEvent");
+
     //Registers event impl if not registred
     public static void registerEvent() {
         if(!isRegistred()){
-            Class<? extends EventImpl> klass = ApiManager.getClassAPI("OpenSignEvent", "ml.volder.unikapi.event.events.opensignevent.impl", EventImpl.class);
+            Class<? extends EventImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.event.events.opensignevent.impl", ApiReferenceStorage::getVersionedOpenSignEvent,EventImpl.class);
             if(klass != null) {
                 try {
                     eventImpl = klass.newInstance();

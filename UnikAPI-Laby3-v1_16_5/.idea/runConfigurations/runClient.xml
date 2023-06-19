@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="runClient" type="Application" factoryName="Application" singleton="false">
+    <envs>
+      <env name="MOD_CLASSES" value="" />
+      <env name="assetIndex" value="1.16" />
+      <env name="assetDirectory" value="C:\Users\Mads Volder\.gradle\caches\forge_gradle\assets" />
+      <env name="nativesDirectory" value="C:\Users\Mads Volder\Desktop\Documents\Projects\Minecraft\Transporter\UnikAPI\UnikAPI-Laby3-v1_16_5\build\natives" />
+      <env name="tweakClass" value="net.labymod.vanilla.LabyModTweaker" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="launch.AddonLauncher" />
+    <option name="VM_PARAMETERS" value="-DdebugMode=true -Daddonresources=addon.json" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks=":prepareRunClient" externalProjectPath="$PROJECT_DIR$" />
+    </method>
+  </configuration>
+</component>

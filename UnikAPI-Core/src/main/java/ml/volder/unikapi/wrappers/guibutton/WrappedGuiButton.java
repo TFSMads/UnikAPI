@@ -1,6 +1,8 @@
 package ml.volder.unikapi.wrappers.guibutton;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 
 import java.lang.reflect.Constructor;
 
@@ -13,9 +15,11 @@ public class WrappedGuiButton {
         this(buttonId, x, y, 200, 20, buttonText);
     }
 
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("WrappedGuiButton");
+
     public WrappedGuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText)
     {
-        Class<? extends IGuiButtonImpl> klass = ApiManager.getClassAPI("WrappedGuiButton", "ml.volder.unikapi.wrappers.guibutton.impl", IGuiButtonImpl.class);
+        Class<? extends IGuiButtonImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.wrappers.guibutton.impl", ApiReferenceStorage::getVersionedGuiButton,IGuiButtonImpl.class);
         if(klass != null) {
             try {
                 Constructor constructor = klass.getDeclaredConstructor(int.class, int.class, int.class, int.class, int.class, String.class, WrappedGuiButton.class);

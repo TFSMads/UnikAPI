@@ -22,6 +22,8 @@ for %%f in (*.jar) do (
 )
 
 cd temp
+mkdir "%~dp0/merge/temp/addonJson/laby4"
+move /Y addon.json, "%~dp0/merge/temp/addonJson/laby4/"
 jar -cvf ..\UnikAPI.jar *
 cd ..
 cd ..

@@ -1,6 +1,8 @@
 package ml.volder.unikapi.event.events.clientmessageevent;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.event.*;
 
 import java.util.ArrayList;
@@ -40,10 +42,12 @@ public class ClientMessageEvent extends Event implements Cancellable {
         return eventImpl != null;
     }
 
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("ClientMessageEvent");
+
     //Registers event impl if not registred
     public static void registerEvent() {
         if(!isRegistred()){
-            Class<? extends EventImpl> klass = ApiManager.getClassAPI("ClientMessageEvent", "ml.volder.unikapi.event.events.clientmessageevent.impl", EventImpl.class);
+            Class<? extends EventImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.event.events.clientmessageevent.impl", ApiReferenceStorage::getVersionedClientMessageEvent,EventImpl.class);
             if(klass != null) {
                 try {
                     eventImpl = klass.newInstance();

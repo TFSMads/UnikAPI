@@ -4,6 +4,7 @@ import ml.volder.unikapi.SupportedClient;
 import ml.volder.unikapi.event.EventImpl;
 import net.labymod.api.Laby;
 import net.labymod.api.event.Subscribe;
+import net.labymod.api.event.client.gui.screen.ScreenDisplayEvent;
 import net.labymod.api.event.client.gui.screen.ScreenOpenEvent;
 
 @SupportedClient(clientBrand = "labymod4", minecraftVersion = "*")
@@ -15,7 +16,7 @@ public class Laby4OpenSignEvent implements EventImpl {
   }
 
   @Subscribe
-  public void onGuiOpen(ScreenOpenEvent event){
+  public void onGuiOpen(ScreenDisplayEvent event){
     eventOpenSign.onScreenOpen(event, getName());
   }
 

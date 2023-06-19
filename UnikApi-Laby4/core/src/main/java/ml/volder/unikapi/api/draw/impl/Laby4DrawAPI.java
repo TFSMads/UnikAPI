@@ -149,7 +149,6 @@ public class Laby4DrawAPI implements DrawAPI {
   }
 
   public int getStringWidth(String text) {
-    //TODO add support for fancy theme (text width is incorrect because it checks the font width of a fancy string even though the vanilla text renderer is used)
     return (int) getTextRenderer().width(text);
   }
 
@@ -250,7 +249,7 @@ public class Laby4DrawAPI implements DrawAPI {
     Stack stack = getRenderStack();
     stack.scale((float) scale, (float) scale, 0);
     //Laby.references().glStateBridge().enableCull();
-    ItemStack itemStack = ((DefaultReferenceStorage)Laby4Loader.referenceStorageAccessor()).unikItemStackFactory().create(material.getNamespace(), material.getPath(
+    ItemStack itemStack = ((DefaultReferenceStorage)Laby4Loader.referenceStorageAccessorInstance()).unikItemStackFactory().create(material.getNamespace(), material.getPath(
         MinecraftAPI.getAPI().isLegacy()), 1, itemDamage == 0 ? material.getItemDamage(itemDamage) : itemDamage);
     //TODO fiks så blocks ikke er mørke og så chest ikke ser mærklig ud.
     if(itemStack == null)

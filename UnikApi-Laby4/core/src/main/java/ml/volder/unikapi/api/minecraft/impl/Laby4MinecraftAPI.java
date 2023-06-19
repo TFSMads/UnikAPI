@@ -5,6 +5,7 @@ import ml.volder.unikapi.SupportedClient;
 import ml.volder.unikapi.api.minecraft.MinecraftAPI;
 import ml.volder.unikapi.loader.Laby4Loader;
 import net.labymod.api.Laby;
+import net.labymod.api.client.gui.screen.NamedScreen;
 import net.labymod.api.reference.annotation.Referenceable;
 import java.net.SocketAddress;
 @Referenceable
@@ -15,7 +16,7 @@ public abstract class Laby4MinecraftAPI implements MinecraftAPI {
 
   public static Laby4MinecraftAPI getAPI() {
     if(instance == null){
-      DefaultReferenceStorage referenceStorage = Laby4Loader.referenceStorageAccessor();
+      DefaultReferenceStorage referenceStorage = Laby4Loader.referenceStorageAccessorInstance();
       instance = referenceStorage.laby4MinecraftAPI();
     }
     return instance;
@@ -55,6 +56,11 @@ public abstract class Laby4MinecraftAPI implements MinecraftAPI {
   @Override
   public String translateLanguageKey(String translateKey) {
     return Laby.labyAPI().minecraft().getTranslation(translateKey);
+  }
+
+  @Override
+  public void openMainMenu() {
+    Laby.labyAPI().minecraft().minecraftWindow().displayScreen(NamedScreen.MAIN_MENU.create());
   }
 
   @Override

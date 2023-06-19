@@ -1,6 +1,9 @@
 package ml.volder.unikapi.api.player;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
+import ml.volder.unikapi.api.minecraft.MinecraftAPI;
 import ml.volder.unikapi.wrappers.guiscreen.WrappedGuiScreen;
 
 import java.util.UUID;
@@ -28,7 +31,9 @@ public interface PlayerAPI {
     void displayChatMessage(String message);
     void displayActionBarMessage(String message);
 
+    ApiProvider<PlayerAPI> apiProvider = new ApiProvider<>("PlayerAPI");
+
     static PlayerAPI getAPI() {
-        return ApiManager.getAPI("PlayerAPI", "ml.volder.unikapi.api.player.impl", PlayerAPI.class);
+        return ApiManager.getAPI(apiProvider, "ml.volder.unikapi.api.player.impl", ApiReferenceStorage::getPlayerAPI, PlayerAPI.class);
     }
 }

@@ -1,6 +1,8 @@
 package ml.volder.unikapi.event.events.clientkeypressevent;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.event.Event;
 import ml.volder.unikapi.event.EventImpl;
 import ml.volder.unikapi.event.EventType;
@@ -36,10 +38,13 @@ public class ClientKeyPressEvent extends Event {
         return eventImpl != null;
     }
 
+
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("ClientKeyPressEvent");
+
     //Registers event impl if not registred
     public static void registerEvent() {
         if(!isRegistred()){
-            Class<? extends EventImpl> klass = ApiManager.getClassAPI("ClientKeyPressEvent", "ml.volder.unikapi.event.events.clientkeypressevent.impl", EventImpl.class);
+            Class<? extends EventImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.event.events.clientkeypressevent.impl", ApiReferenceStorage::getVersionedClientKeyPressEvent,EventImpl.class);
             if(klass != null) {
                 try {
                     eventImpl = klass.newInstance();

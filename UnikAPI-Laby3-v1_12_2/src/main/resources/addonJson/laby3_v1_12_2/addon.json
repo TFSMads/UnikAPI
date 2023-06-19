@@ -1,0 +1,11 @@
+{
+  "uuid": "%uuid%",
+  "name": "%name%",
+  "mainClass": "ml.volder.unikapi.loader.Laby3Loader_v1_12_2",
+  "description": "%description%",
+  "transformerClass": "ml.volder.unikapi.transformer.Laby3Transformer_v1_12_2",
+  "version": %version%,
+  "author": "%author%",
+  "category": 2,
+  "icon": "%icon%"
+}

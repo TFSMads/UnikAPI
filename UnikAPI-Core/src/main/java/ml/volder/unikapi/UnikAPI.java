@@ -1,5 +1,6 @@
 package ml.volder.unikapi;
 
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.logger.DefaultLogger;
 import ml.volder.unikapi.logger.Logger;
 
@@ -37,6 +38,20 @@ public class UnikAPI {
     // - 1.8.8
     // - 1.8.9
 
+    private static ApiReferenceStorage apiReferenceStorage;
+
+    public static void registerReferenceStorage(ApiReferenceStorage apiReferenceStorage) {
+        UnikAPI.apiReferenceStorage = apiReferenceStorage;
+    }
+
+    public static ApiReferenceStorage getApiReferenceStorage() {
+        return apiReferenceStorage;
+    }
+
+    public static boolean isReferenceStorageSpecified() {
+        return apiReferenceStorage != null;
+    }
+
     public static void initAPI(String clientBrand, String otherVersion, String minecraftVersion) {
         UnikAPI.clientBrand = clientBrand;
         UnikAPI.otherVersion = otherVersion;
@@ -48,12 +63,13 @@ public class UnikAPI {
     }
 
     private static boolean matchDotSepperatedVersion(String matchVersion, String versionToCheck) {
-        String[] subVersionsMatch = matchVersion.split(".");
-        String[] subVersionsCheck = versionToCheck.split(".");
+        String[] subVersionsMatch = matchVersion.split("\\.");
+        String[] subVersionsCheck = versionToCheck.split("\\.");
         int index = -1;
         for (String subVersion : subVersionsMatch) {
             index++;
-            if(subVersion.equals("*")){
+            String subVersionCheck = subVersionsCheck[index] != null ? subVersionsCheck[index] : "*";
+            if(subVersion.equals("*") || subVersionCheck.equals("*")){
                 if(subVersionsMatch.length - 1 >= index + 1)
                     continue;
                 return true;

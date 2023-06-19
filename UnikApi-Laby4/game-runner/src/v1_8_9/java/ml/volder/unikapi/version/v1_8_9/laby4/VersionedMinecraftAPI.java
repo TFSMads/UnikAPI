@@ -13,7 +13,6 @@ public class VersionedMinecraftAPI extends Laby4MinecraftAPI{
 
   @Inject
   public VersionedMinecraftAPI() {
-
   }
 
   @Override

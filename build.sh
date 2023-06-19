@@ -23,6 +23,8 @@ for f in *.jar ; do
 done
 
 cd temp
+mkdir addonJson/laby4/
+mv -f addon.json addonJson/laby4/addon.json
 jar -cvf ../UnikAPI.jar *
 cd ..
 cd ..

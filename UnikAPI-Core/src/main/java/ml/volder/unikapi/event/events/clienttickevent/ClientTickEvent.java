@@ -1,6 +1,8 @@
 package ml.volder.unikapi.event.events.clienttickevent;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.event.Event;
 import ml.volder.unikapi.event.EventImpl;
 import ml.volder.unikapi.event.EventType;
@@ -37,9 +39,11 @@ public class ClientTickEvent extends Event {
     }
 
     //Registers event impl if not registred
+
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("ClientTickEvent");
     public static void registerEvent() {
         if(!isRegistred()){
-            Class<? extends EventImpl> klass = ApiManager.getClassAPI("ClientTickEvent", "ml.volder.unikapi.event.events.clienttickevent.impl", EventImpl.class);
+            Class<? extends EventImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.event.events.clienttickevent.impl", ApiReferenceStorage::getVersionedClientTickEvent,EventImpl.class);
             if(klass != null) {
                 try {
                     eventImpl = klass.newInstance();

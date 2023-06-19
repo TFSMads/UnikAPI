@@ -1,6 +1,8 @@
 package ml.volder.unikapi.event.events.drawscreenevent;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.event.Event;
 import ml.volder.unikapi.event.EventImpl;
 import ml.volder.unikapi.event.EventType;
@@ -58,10 +60,12 @@ public class DrawScreenEvent extends Event {
         return eventImpl != null;
     }
 
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("DrawScreenEvent");
+
     //Registers event impl if not registred
     public static void registerEvent() {
         if(!isRegistred()){
-            Class<? extends EventImpl> klass = ApiManager.getClassAPI("DrawScreenEvent", "ml.volder.unikapi.event.events.drawscreenevent.impl", EventImpl.class);
+            Class<? extends EventImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.event.events.drawscreenevent.impl", ApiReferenceStorage::getVersionedDrawScreenEvent,EventImpl.class);
             if(klass != null) {
                 try {
                     eventImpl = klass.newInstance();

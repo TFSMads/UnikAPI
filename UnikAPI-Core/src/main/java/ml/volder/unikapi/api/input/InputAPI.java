@@ -1,6 +1,9 @@
 package ml.volder.unikapi.api.input;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
+import ml.volder.unikapi.api.draw.DrawAPI;
 import ml.volder.unikapi.keysystem.Key;
 
 public interface InputAPI {
@@ -12,7 +15,9 @@ public interface InputAPI {
     String getKeyName(Key key);
     void enableRepeatEvents(boolean enable);
 
+    ApiProvider<InputAPI> apiProvider = new ApiProvider<>("InputAPI");
+
     static InputAPI getAPI() {
-        return ApiManager.getAPI("InputAPI", "ml.volder.unikapi.api.input.impl", InputAPI.class);
+        return ApiManager.getAPI(apiProvider, "ml.volder.unikapi.api.input.impl", ApiReferenceStorage::getInputAPI, InputAPI.class);
     }
 }

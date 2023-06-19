@@ -1,7 +1,10 @@
 package ml.volder.unikapi.keysystem;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.api.input.InputAPI;
+import ml.volder.unikapi.api.player.PlayerAPI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -11,8 +14,10 @@ import java.util.Objects;
 
 public abstract class KeyMapper {
 
+    private static ApiProvider<KeyMapper> apiProvider = new ApiProvider<>("KeyMapper");
+
     public static KeyMapper getVersionedInstance() {
-        return ApiManager.getAPI("KeyMapper", "ml.volder.unikapi.keysystem.impl", KeyMapper.class);
+        return ApiManager.getAPI(apiProvider, "ml.volder.unikapi.keysystem.impl", ApiReferenceStorage::getVersionedKeyMapper, KeyMapper.class);
     }
 
     public static final char DEFAULT_CHAR = '\u0000';

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import ml.volder.unikapi.SupportedClient;
 import ml.volder.unikapi.api.draw.impl.Laby4DrawAPI;
+import ml.volder.unikapi.api.input.InputAPI;
 import ml.volder.unikapi.api.input.impl.Laby4InputAPI;
 import ml.volder.unikapi.api.player.PlayerAPI;
 import ml.volder.unikapi.keysystem.KeyMapper;
@@ -169,7 +170,7 @@ public class Laby4GuiScreenImpl extends LabyScreen implements IGuiScreenImpl {
       PlayerAPI.getAPI().openGuiScreen(null);
     }
     ml.volder.unikapi.keysystem.Key convertedKey = Laby4KeyMapper.convert(key);
-    if(convertedKey.isCharacter())
+    if(convertedKey.isCharacter() && !InputAPI.getAPI().isCtrlKeyDown())
       return false;
     screen.keyTyped(convertedKey.getCharacter(), convertedKey);
     return false;

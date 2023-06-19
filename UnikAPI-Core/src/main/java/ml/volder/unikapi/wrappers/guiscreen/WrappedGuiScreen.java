@@ -1,6 +1,8 @@
 package ml.volder.unikapi.wrappers.guiscreen;
 
 import ml.volder.unikapi.api.ApiManager;
+import ml.volder.unikapi.api.ApiProvider;
+import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.keysystem.Key;
 import ml.volder.unikapi.keysystem.MouseButton;
 import ml.volder.unikapi.wrappers.guibutton.WrappedGuiButton;
@@ -10,9 +12,9 @@ import java.lang.reflect.Constructor;
 public abstract class WrappedGuiScreen {
 
     private IGuiScreenImpl impl;
-
+    private static ApiProvider<Class> apiProvider = new ApiProvider<>("WrappedGuiScreen");
     public WrappedGuiScreen() {
-        Class<? extends IGuiScreenImpl> klass = ApiManager.getClassAPI("WrappedGuiScreen", "ml.volder.unikapi.wrappers.guiscreen.impl", IGuiScreenImpl.class);
+        Class<? extends IGuiScreenImpl> klass = ApiManager.getClassAPI(apiProvider, "ml.volder.unikapi.wrappers.guiscreen.impl", ApiReferenceStorage::getVersionedGuiScreen,IGuiScreenImpl.class);
         if(klass != null) {
             try {
                 Constructor constructor = klass.getDeclaredConstructor(WrappedGuiScreen.class);
