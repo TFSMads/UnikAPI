@@ -11,7 +11,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'com.github.TFSMads', name: 'ForgeGradle', version: 'db763f85c0'
+        classpath group: 'com.github.TFSMads', name: 'ForgeGradle', version: '-SNAPSHOT'
         classpath group: 'com.github.ImpactDevelopment', name: 'MixinGradle', version: '0.6.2'
     }
 }
