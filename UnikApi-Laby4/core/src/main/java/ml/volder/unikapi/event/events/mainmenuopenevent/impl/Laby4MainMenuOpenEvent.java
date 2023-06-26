@@ -6,6 +6,7 @@ import ml.volder.unikapi.event.EventImpl;
 import ml.volder.unikapi.event.EventManager;
 import ml.volder.unikapi.event.EventType;
 import ml.volder.unikapi.event.events.mainmenuopenevent.MainMenuOpenEvent;
+import ml.volder.unikapi.wrappers.guiscreen.impl.Laby4GuiScreenImpl;
 import net.labymod.api.Laby;
 import net.labymod.api.client.gui.lss.meta.LinkMeta;
 import net.labymod.api.client.gui.lss.meta.LinkReference;
@@ -39,9 +40,9 @@ public class Laby4MainMenuOpenEvent implements EventImpl {
       MainMenuOpenEvent openEvent = new MainMenuOpenEvent(EventType.PRE, getName());
       EventManager.callEvent(openEvent);
       if(openEvent.getNewScreen() != null)
-        PlayerAPI.getAPI().openGuiScreen(openEvent.getNewScreen());
+        event.setScreen(openEvent.getNewScreen().getHandle(Laby4GuiScreenImpl.class));
       if(openEvent.isCancelled())
-        PlayerAPI.getAPI().openGuiScreen(null);
+        event.setScreen(null);
     }
   }
 
