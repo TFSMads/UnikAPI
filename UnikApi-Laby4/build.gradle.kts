@@ -13,11 +13,11 @@ labyMod {
     defaultPackageName = "ml.volder" //change this to your main package name (used by all modules)
     addonInfo {
         namespace = "unikapi"
-        displayName = "UnikAPI"
-        author = "Mads"
-        description = "Example Description"
+        displayName = "%name%"
+        author = "%author%"
+        description = "%description%"
         minecraftVersion = "*"
-        version = System.getenv().getOrDefault("VERSION", "0.0.1")
+        version = "%version%"
     }
 
     minecraft {
