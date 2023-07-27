@@ -15,6 +15,7 @@ import ml.volder.unikapi.wrappers.guibutton.WrappedGuiButton;
 import ml.volder.unikapi.wrappers.guibutton.impl.Laby4GuiButton;
 import ml.volder.unikapi.wrappers.guiscreen.IGuiScreenImpl;
 import ml.volder.unikapi.wrappers.guiscreen.WrappedGuiScreen;
+import net.labymod.api.Laby;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
@@ -146,7 +147,7 @@ public class Laby4GuiScreenImpl extends LabyScreen implements IGuiScreenImpl {
 
   @Override
   public void updateKeyRepeatingMode(boolean enabled) {
-
+    Laby.labyAPI().minecraft().updateKeyRepeatingMode(enabled);
   }
 
   @Override
@@ -170,7 +171,9 @@ public class Laby4GuiScreenImpl extends LabyScreen implements IGuiScreenImpl {
       PlayerAPI.getAPI().openGuiScreen(null);
     }
     ml.volder.unikapi.keysystem.Key convertedKey = Laby4KeyMapper.convert(key);
-    if(convertedKey.isCharacter() && !InputAPI.getAPI().isCtrlKeyDown())
+    if(convertedKey.isCharacter() && !Laby4InputAPI.getAPI().isCtrlKeyDown())
+      return false;
+    if(Laby4InputAPI.getAPI().isCtrlKeyDown() && Laby4InputAPI.getAPI().isAltKeyDown())
       return false;
     screen.keyTyped(convertedKey.getCharacter(), convertedKey);
     return false;

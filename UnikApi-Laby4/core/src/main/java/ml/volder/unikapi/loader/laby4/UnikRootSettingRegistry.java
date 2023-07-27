@@ -11,15 +11,17 @@ public class UnikRootSettingRegistry extends RootSettingRegistry {
 
   protected String displayName;
   Consumer<UnikRootSettingRegistry> initializeCallback;
+  UnikSetting unikSetting;
 
   public UnikRootSettingRegistry(String namespace, String id, Consumer<UnikRootSettingRegistry> initializeCallback) {
     super(namespace, id);
     this.initializeCallback = initializeCallback;
+    this.unikSetting = new UnikSetting(initializeCallback, this);
+    this.addSetting(unikSetting);
   }
 
   @Override
   public List<KeyValue<Setting>> getElements() {
-    initializeCallback.accept(this);
     return super.getElements();
   }
 

@@ -6,6 +6,7 @@ import ml.volder.unikapi.event.EventManager;
 import ml.volder.unikapi.event.EventType;
 import ml.volder.unikapi.event.events.clienttickevent.ClientTickEvent;
 import net.labymod.api.Laby;
+import net.labymod.api.event.Phase;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.lifecycle.GameTickEvent;
 
@@ -13,6 +14,8 @@ import net.labymod.api.event.client.lifecycle.GameTickEvent;
 public class Laby4TickEvent implements EventImpl {
   @Subscribe
   public void onTick(GameTickEvent event){
+    if(event.phase() == Phase.POST)
+      return;
     EventManager.callEvent(new ClientTickEvent(EventType.PRE, getName()));
   }
 

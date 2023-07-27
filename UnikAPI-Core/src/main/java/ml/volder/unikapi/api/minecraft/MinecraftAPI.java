@@ -9,6 +9,8 @@ import java.net.SocketAddress;
 public interface MinecraftAPI {
     boolean isInGame();
     boolean isSingleplayer();
+
+    boolean isF3MenuOpen();
     String filterAllowedCharacters(String inputString);
     boolean isAllowedCharacter(char character);
     SocketAddress getSocketAddress();

@@ -5,6 +5,7 @@ import ml.volder.unikapi.api.inventory.InventoryAPI;
 import ml.volder.unikapi.api.minecraft.MinecraftAPI;
 import ml.volder.unikapi.types.Material;
 import net.labymod.api.Laby;
+import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
 
@@ -24,12 +25,14 @@ public class Laby4InventoryAPI implements InventoryAPI {
     int amount = 0;
     for (int slot = 0; slot < 36; slot++) {
       ItemStack itemStack = Laby.labyAPI().minecraft().getClientPlayer().inventory().itemStackAt(slot);
+
       if(itemStack == null
           || itemStack.isAir()
           || itemStack.getAsItem() == null
           || itemStack.getAsItem().getIdentifier() == null
           || !itemStack.getAsItem().getIdentifier().equals(ResourceLocation.create(material.getNamespace(), material.getPath(MinecraftAPI.getAPI().isLegacy())))
           || (MinecraftAPI.getAPI().isLegacy() && itemStack.getCurrentDamageValue() != itemDamage)
+          || !(itemStack.getNBTTag() == null)
       )
         continue;
       amount += itemStack.getSize();

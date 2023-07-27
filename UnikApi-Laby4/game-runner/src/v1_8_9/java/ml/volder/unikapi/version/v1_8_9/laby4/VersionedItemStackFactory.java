@@ -1,14 +1,13 @@
 package ml.volder.unikapi.version.v1_8_9.laby4;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import ml.volder.unikapi.laby4.UnikItemStackFactory;
 import net.labymod.api.client.resources.ResourceLocation;
-import net.labymod.api.client.world.item.ItemStack;
 import net.labymod.api.models.Implements;
 import net.labymod.v1_8_9.client.util.ItemUtil;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 @Singleton
 @Implements(UnikItemStackFactory.class)

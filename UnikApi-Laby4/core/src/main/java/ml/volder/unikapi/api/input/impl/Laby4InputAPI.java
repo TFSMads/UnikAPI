@@ -51,7 +51,7 @@ public class Laby4InputAPI implements InputAPI {
 
   @Override
   public void enableRepeatEvents(boolean enable) {
-    //Not supported!
+    Laby.labyAPI().minecraft().updateKeyRepeatingMode(enable);
   }
 
 }

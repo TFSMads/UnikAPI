@@ -5,7 +5,9 @@ import ml.volder.unikapi.SupportedClient;
 import ml.volder.unikapi.api.minecraft.MinecraftAPI;
 import ml.volder.unikapi.loader.Laby4Loader;
 import net.labymod.api.Laby;
+import net.labymod.api.client.gui.hud.HudWidgetRendererAccessor;
 import net.labymod.api.client.gui.screen.NamedScreen;
+import net.labymod.api.client.gui.screen.widget.widgets.hud.HudWidgetWidget;
 import net.labymod.api.reference.annotation.Referenceable;
 import java.net.SocketAddress;
 @Referenceable
@@ -29,6 +31,11 @@ public abstract class Laby4MinecraftAPI implements MinecraftAPI {
   @Override
   public boolean isSingleplayer() {
     return Laby.labyAPI().minecraft().isSingleplayer();
+  }
+
+  @Override
+  public boolean isF3MenuOpen() {
+    return Laby.labyAPI().minecraft().options().isDebugEnabled();
   }
 
   @Override

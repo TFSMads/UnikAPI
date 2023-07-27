@@ -720,7 +720,7 @@ public enum Material {
     GOLD_INGOT(false, -1, "minecraft", "gold_ingot", LEGACY_GOLD_INGOT, 0),
     BONE(false, -1, "minecraft", "bone", LEGACY_BONE, 0),
     GLOWSTONE_DUST(false, -1, "minecraft", "glowstone_dust", LEGACY_GLOWSTONE_DUST, 0),
-    GLOWSTONE(false, -1, "minecraft", "glowstone", LEGACY_COBBLESTONE, 0),
+    GLOWSTONE(false, -1, "minecraft", "glowstone", LEGACY_GLOWSTONE, 0),
     LAPIS_LAZULI(false, -1, "minecraft", "lapis_lazuli", LEGACY_INK_SACK, 4),
     QUARTZ(false, -1, "minecraft", "quartz", LEGACY_QUARTZ, 0),
     REDSTONE(false, -1, "minecraft", "redstone", LEGACY_REDSTONE, 0),

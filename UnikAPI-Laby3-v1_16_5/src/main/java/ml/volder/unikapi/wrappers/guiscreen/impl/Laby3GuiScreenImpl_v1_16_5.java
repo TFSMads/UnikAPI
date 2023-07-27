@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import ml.volder.unikapi.SupportedClient;
 import ml.volder.unikapi.api.draw.impl.Laby3DrawAPI_v1_16_5;
 import ml.volder.unikapi.api.input.InputAPI;
+import ml.volder.unikapi.api.input.impl.Laby3InputAPI_v1_16_5;
 import ml.volder.unikapi.api.player.PlayerAPI;
 import ml.volder.unikapi.keysystem.Key;
 import ml.volder.unikapi.keysystem.impl.Laby3KeyMapper_v1_16_5;
@@ -68,7 +69,7 @@ public class Laby3GuiScreenImpl_v1_16_5 extends Screen implements IGuiScreenImpl
         if(key.equals(Key.ESCAPE)) {
             PlayerAPI.getAPI().openGuiScreen(null);
         }
-        if(key.isCharacter() && !InputAPI.getAPI().isCtrlKeyDown())
+        if(key.isCharacter())
             return false;
         screen.keyTyped(key.getCharacter(), key);
         return false;

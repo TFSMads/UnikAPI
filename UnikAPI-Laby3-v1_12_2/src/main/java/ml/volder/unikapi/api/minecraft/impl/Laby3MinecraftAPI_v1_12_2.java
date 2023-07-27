@@ -25,6 +25,11 @@ public class Laby3MinecraftAPI_v1_12_2 implements MinecraftAPI {
     }
 
     @Override
+    public boolean isF3MenuOpen() {
+        return Minecraft.getMinecraft().gameSettings.showDebugInfo;
+    }
+
+    @Override
     public String filterAllowedCharacters(String inputString) {
         return ChatAllowedCharacters.filterAllowedCharacters(inputString);
     }
