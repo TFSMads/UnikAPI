@@ -240,7 +240,7 @@ public enum Material {
     @Deprecated
     ENCHANTMENT_TABLE(true, 116, "minecraft", "enchanting_table"),
     @Deprecated
-    BREWING_STAND(true, 117, "minecraft", "brewing_stand"),
+    BREWING_STAND_BLOCK(true, 117, "minecraft", "brewing_stand"),
     @Deprecated
     CAULDRON(true, 118, "minecraft", "cauldron"),
     @Deprecated
@@ -296,7 +296,7 @@ public enum Material {
     @Deprecated
     SKULL(true, 144, "minecraft", "skull"),
     @Deprecated
-    ANVIL(true, 145, "minecraft", "anvil"),
+    LEGACY_ANVIL(true, 145, "minecraft", "anvil"),
     @Deprecated
     LEGACY_TRAPPED_CHEST(true, 146, "minecraft", "trapped_chest"),
     @Deprecated
@@ -360,7 +360,7 @@ public enum Material {
     @Deprecated
     APPLE(true, 260, "minecraft", "apple"),
     @Deprecated
-    BOW(true, 261, "minecraft", "bow"),
+    LEGACY_BOW(true, 261, "minecraft", "bow"),
     @Deprecated
     ARROW(true, 262, "minecraft", "arrow"),
     @Deprecated
@@ -390,15 +390,15 @@ public enum Material {
     @Deprecated
     STONE_AXE(true, 275, "minecraft", "stone_axe"),
     @Deprecated
-    DIAMOND_SWORD(true, 276, "minecraft", "diamond_sword"),
+    LEGACY_DIAMOND_SWORD(true, 276, "minecraft", "diamond_sword"),
     @Deprecated
-    DIAMOND_SPADE(true, 277, "minecraft", "diamond_shovel"),
+    LEGACY_DIAMOND_SPADE(true, 277, "minecraft", "diamond_shovel"),
     @Deprecated
-    DIAMOND_PICKAXE(true, 278, "minecraft", "diamond_pickaxe"),
+    LEGACY_DIAMOND_PICKAXE(true, 278, "minecraft", "diamond_pickaxe"),
     @Deprecated
-    DIAMOND_AXE(true, 279, "minecraft", "diamond_axe"),
+    LEGACY_DIAMOND_AXE(true, 279, "minecraft", "diamond_axe"),
     @Deprecated
-    STICK(true, 280, "minecraft", "stick"),
+    LEGACY_STICK(true, 280, "minecraft", "stick"),
     @Deprecated
     BOWL(true, 281, "minecraft", "bowl"),
     @Deprecated
@@ -440,7 +440,7 @@ public enum Material {
     @Deprecated
     LEATHER_LEGGINGS(true, 300, "minecraft", "leather_leggings"),
     @Deprecated
-    LEATHER_BOOTS(true, 301, "minecraft", "leather_boots"),
+    LEGACY_LEATHER_BOOTS(true, 301, "minecraft", "leather_boots"),
     @Deprecated
     CHAINMAIL_HELMET(true, 302, "minecraft", "chainmail_helmet"),
     @Deprecated
@@ -496,7 +496,7 @@ public enum Material {
     @Deprecated
     MINECART(true, 328, "minecraft", "minecart"),
     @Deprecated
-    SADDLE(true, 329, "minecraft", "saddle"),
+    LEGACY_SADDLE(true, 329, "minecraft", "saddle"),
     @Deprecated
     IRON_DOOR(true, 330, "minecraft", "iron_door"),
     @Deprecated
@@ -530,7 +530,7 @@ public enum Material {
     @Deprecated
     COMPASS(true, 345, "minecraft", "compass"),
     @Deprecated
-    FISHING_ROD(true, 346, "minecraft", "fishing_rod"),
+    LEGACY_FISHING_ROD(true, 346, "minecraft", "fishing_rod"),
     @Deprecated
     LEGACY_WATCH(true, 347, "minecraft", "clock"),
     @Deprecated
@@ -588,7 +588,7 @@ public enum Material {
     @Deprecated
     GLASS_BOTTLE(true, 374, "minecraft", "glass_bottle"),
     @Deprecated
-    SPIDER_EYE(true, 375, "minecraft", "spider_eye"),
+    LEGACY_SPIDER_EYE(true, 375, "minecraft", "spider_eye"),
     @Deprecated
     FERMENTED_SPIDER_EYE(true, 376, "minecraft", "fermented_spider_eye"),
     @Deprecated
@@ -596,7 +596,7 @@ public enum Material {
     @Deprecated
     MAGMA_CREAM(true, 378, "minecraft", "magma_cream"),
     @Deprecated
-    BREWING_STAND_ITEM(true, 379, "minecraft", "brewing_stand"),
+    LEGACY_BREWING_STAND_ITEM(true, 379, "minecraft", "brewing_stand"),
     @Deprecated
     CAULDRON_ITEM(true, 380, "minecraft", "cauldron"),
     @Deprecated
@@ -775,7 +775,21 @@ public enum Material {
     BROWN_GLASS(false, -1, "minecraft", "brown_stained_glass", STAINED_GLASS, 12),
     GREEN_GLASS(false, -1, "minecraft", "green_stained_glass", STAINED_GLASS, 13),
     RED_GLASS(false, -1, "minecraft", "red_stained_glass", STAINED_GLASS, 14),
-    BLACK_GLASS(false, -1, "minecraft", "black_stained_glass", STAINED_GLASS, 15);
+    BLACK_GLASS(false, -1, "minecraft", "black_stained_glass", STAINED_GLASS, 15),
+
+    DIAMOND_SHOVEL(false, -1, "minecraft", "diamond_shovel", LEGACY_DIAMOND_SPADE, 0),
+    DIAMOND_AXE(false, -1, "minecraft", "diamond_axe", LEGACY_DIAMOND_AXE, 0),
+    ANVIL(false, -1, "minecraft", "anvil", LEGACY_ANVIL, 0),
+    LEATHER_BOOTS(false, -1, "minecraft", "leather_boots", LEGACY_LEATHER_BOOTS, 0),
+    BREWING_STAND(false, -1, "minecraft", "brewing_stand", LEGACY_BREWING_STAND_ITEM, 0),
+    BOW(false, -1, "minecraft", "bow", LEGACY_BOW, 0),
+    FISHING_ROD(false, -1, "minecraft", "fishing_rod", LEGACY_FISHING_ROD, 0),
+    SPIDER_EYE(false, -1, "minecraft", "spider_eye", LEGACY_SPIDER_EYE, 0),
+    DIAMOND_PICKAXE(false, -1, "minecraft", "diamond_pickaxe", LEGACY_DIAMOND_PICKAXE, 0),
+    DIAMOND_SWORD(false, -1, "minecraft", "diamond_sword", LEGACY_DIAMOND_SWORD, 0),
+    SADDLE(false, -1, "minecraft", "saddle", LEGACY_SADDLE, 0),
+    STICK(false, -1, "minecraft", "stick", LEGACY_STICK, 0);
+
 
     private int id = 0;
     private String namespace;

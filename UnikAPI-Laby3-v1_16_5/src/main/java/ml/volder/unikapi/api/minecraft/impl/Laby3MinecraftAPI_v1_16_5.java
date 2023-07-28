@@ -5,9 +5,14 @@ import ml.volder.unikapi.api.minecraft.MinecraftAPI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.scoreboard.Score;
+import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.util.SharedConstants;
 
 import java.net.SocketAddress;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @SupportedClient(clientBrand = "labymod3", minecraftVersion = "1.16.*")
 public class Laby3MinecraftAPI_v1_16_5 implements MinecraftAPI {
@@ -61,6 +66,26 @@ public class Laby3MinecraftAPI_v1_16_5 implements MinecraftAPI {
     @Override
     public boolean isLegacy() {
         return false;
+    }
+
+    @Override
+    public Map<String, Integer> getScoreBoardLines() {
+        Map<String, Integer> scoreBoardLines = new HashMap<>();
+        if(Minecraft.getInstance().world == null || Minecraft.getInstance().world.getScoreboard() == null ||  Minecraft.getInstance().world.getScoreboard().getObjectiveInDisplaySlot(1) == null)
+            return scoreBoardLines;
+        ScoreObjective objective = Minecraft.getInstance().world.getScoreboard().getObjectiveInDisplaySlot(1);
+        Collection<Score> scores = Minecraft.getInstance().world.getScoreboard().getSortedScores(objective);
+        for (Score score : scores) {
+            scoreBoardLines.put(score.getPlayerName(), score.getScorePoints());
+        }
+        return scoreBoardLines;
+    }
+
+    @Override
+    public String getScoreBoardTitle() {
+        if(Minecraft.getInstance().world == null || Minecraft.getInstance().world.getScoreboard() == null || Minecraft.getInstance().world.getScoreboard().getObjectiveInDisplaySlot(1) == null)
+            return "";
+        return Minecraft.getInstance().world.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName().getString();
     }
 
     public static Laby3MinecraftAPI_v1_16_5 getAPI() {

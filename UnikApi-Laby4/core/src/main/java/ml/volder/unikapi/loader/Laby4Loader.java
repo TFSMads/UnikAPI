@@ -5,6 +5,8 @@ import ml.volder.unikapi.api.ApiReferenceStorageLaby4;
 import ml.volder.unikapi.loader.laby4.Laby4AddonConfig;
 import ml.volder.unikapi.loader.laby4.UnikRootSettingRegistry;
 import ml.volder.unikapi.logger.Laby4Logger;
+import ml.volder.unikapi.widgets.Laby4ModuleManager;
+import ml.volder.unikapi.widgets.ModuleSystem;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.event.Subscribe;
@@ -27,6 +29,7 @@ public class Laby4Loader extends LabyAddon<Laby4AddonConfig> {
     UnikAPI.LOGGER = new Laby4Logger("UnikAPI");
     UnikAPI.initAPI("labymod4", null, "*");
     UnikAPI.registerReferenceStorage(ApiReferenceStorageLaby4.getInstance());
+    ModuleSystem.setModuleManager(new Laby4ModuleManager());
     Loader.onEnable(Laby.labyAPI().addonService().getAddon(this.getClass()).get().getClassLoader().getResourceAsStream("loaderInfo.json"));
     Laby.labyAPI().eventBus().registerListener(this);
 

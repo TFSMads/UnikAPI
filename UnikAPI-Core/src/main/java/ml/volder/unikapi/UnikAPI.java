@@ -1,8 +1,12 @@
 package ml.volder.unikapi;
 
 import ml.volder.unikapi.api.ApiReferenceStorage;
+import ml.volder.unikapi.api.player.PlayerAPI;
 import ml.volder.unikapi.logger.DefaultLogger;
 import ml.volder.unikapi.logger.Logger;
+
+import java.io.File;
+import java.util.UUID;
 
 public class UnikAPI {
 
@@ -109,5 +113,40 @@ public class UnikAPI {
 
     public static String getMinecraftVersion() {
         return minecraftVersion;
+    }
+
+    private static File commonDataFolder;
+    private static File playerDataFolder;
+    private static UUID lastUUID;
+
+    private static boolean hasUUIDChanged() {
+        if(lastUUID == null)
+            return true;
+        return !lastUUID.equals(PlayerAPI.getAPI().getUUID());
+    }
+
+    private static void initDataFolders() {
+        File file = new File("TransporterAddon/");
+        file.mkdirs();
+        commonDataFolder = file;
+        if(lastUUID != null){
+            file = new File("TransporterAddon/" + PlayerAPI.getAPI().getUUID());
+            file.mkdirs();
+            playerDataFolder = file;
+        }
+    }
+
+    public static File getCommonDataFolder() {
+        if (commonDataFolder == null)
+            initDataFolders();
+        return commonDataFolder;
+    }
+
+    public static File getPlayerDataFolder() {
+        if(hasUUIDChanged()){
+            lastUUID = PlayerAPI.getAPI().getUUID();
+            initDataFolders();
+        }
+        return playerDataFolder;
     }
 }

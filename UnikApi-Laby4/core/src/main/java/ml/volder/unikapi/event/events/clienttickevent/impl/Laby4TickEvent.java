@@ -9,11 +9,12 @@ import net.labymod.api.Laby;
 import net.labymod.api.event.Phase;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.lifecycle.GameTickEvent;
+import org.jetbrains.annotations.NotNull;
 
 @SupportedClient(clientBrand = "labymod4", minecraftVersion = "*")
 public class Laby4TickEvent implements EventImpl {
   @Subscribe
-  public void onTick(GameTickEvent event){
+  public void onTick(@NotNull GameTickEvent event){
     if(event.phase() == Phase.POST)
       return;
     EventManager.callEvent(new ClientTickEvent(EventType.PRE, getName()));

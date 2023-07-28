@@ -24,6 +24,8 @@ public interface ApiReferenceStorage {
     Class<? extends EventImpl> getVersionedOpenSignEvent();
     Class<? extends EventImpl> getVersionedMainMenuOpenEvent();
 
+    Class<? extends EventImpl> getVersionedSendMessageEvent();
+
     KeyMapper getVersionedKeyMapper();
 
     Class<? extends IGuiButtonImpl> getVersionedGuiButton();
