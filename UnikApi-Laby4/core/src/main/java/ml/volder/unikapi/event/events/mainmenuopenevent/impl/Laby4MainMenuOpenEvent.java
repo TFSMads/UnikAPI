@@ -51,9 +51,23 @@ public class Laby4MainMenuOpenEvent implements EventImpl {
       return "laby4-openmainmenuevent";
   }
 
+  private static Laby4MainMenuOpenEvent instance;
+
   @Override
   public void register() {
+    instance = this;
     Laby.labyAPI().eventBus().registerListener(this);
+  }
+
+  public static void checkMainMenu() {
+    if(instance == null)
+      return;
+    if(instance.isMainMenu(Laby.labyAPI().minecraft().minecraftWindow().currentScreen().unwrap())) {
+      MainMenuOpenEvent openEvent = new MainMenuOpenEvent(EventType.PRE, instance.getName());
+      EventManager.callEvent(openEvent);
+      if(openEvent.getNewScreen() != null)
+        Laby.labyAPI().minecraft().minecraftWindow().displayScreen(openEvent.getNewScreen().getHandle(Laby4GuiScreenImpl.class));
+    }
   }
 
 }

@@ -5,7 +5,6 @@ import ml.volder.unikapi.types.Material;
 import net.labymod.api.Laby;
 import net.labymod.api.client.gui.hud.binding.category.HudWidgetCategory;
 import net.labymod.api.client.gui.navigation.elements.ScreenNavigationElement;
-import net.labymod.api.client.gui.screen.ScreenInstance;
 import net.labymod.api.client.gui.screen.activity.types.TabbedActivity;
 
 public class Laby4ModuleManager implements ModuleManager{

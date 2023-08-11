@@ -18,6 +18,7 @@ import ml.volder.unikapi.event.events.drawscreenevent.impl.Laby3DrawScreenEvent_
 import ml.volder.unikapi.event.events.mainmenuopenevent.impl.Laby3MainMenuOpenEvent_v1_16_5;
 import ml.volder.unikapi.event.events.opensignevent.impl.Laby3OpenSignEvent_v1_16_5;
 import ml.volder.unikapi.event.events.sendmessageevent.impl.Laby3SendMessageEvent_v1_16_5;
+import ml.volder.unikapi.event.events.serverswitchevent.impl.Laby3ServerSwitchEvent_v1_16_5;
 import ml.volder.unikapi.keysystem.KeyMapper;
 import ml.volder.unikapi.keysystem.impl.Laby3KeyMapper_v1_16_5;
 import ml.volder.unikapi.wrappers.guibutton.IGuiButtonImpl;
@@ -93,6 +94,11 @@ public class ApiReferenceStorageLaby3_v1_16_5 implements ApiReferenceStorage{
     @Override
     public Class<? extends EventImpl> getVersionedSendMessageEvent() {
         return Laby3SendMessageEvent_v1_16_5.class;
+    }
+
+    @Override
+    public Class<? extends EventImpl> getVersionedServerSwitchEvent() {
+        return Laby3ServerSwitchEvent_v1_16_5.class;
     }
 
     @Override

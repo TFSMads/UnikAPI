@@ -18,7 +18,7 @@ public enum Material {
     @Deprecated
     WOOD(true, 5, "minecraft", "planks"),
     @Deprecated
-    SAPLING(true, 6, "minecraft", "sapling"),
+    LEGACY_SAPLING(true, 6, "minecraft", "sapling"),
     @Deprecated
     BEDROCK(true, 7, "minecraft", "bedrock"),
     @Deprecated
@@ -788,8 +788,10 @@ public enum Material {
     DIAMOND_PICKAXE(false, -1, "minecraft", "diamond_pickaxe", LEGACY_DIAMOND_PICKAXE, 0),
     DIAMOND_SWORD(false, -1, "minecraft", "diamond_sword", LEGACY_DIAMOND_SWORD, 0),
     SADDLE(false, -1, "minecraft", "saddle", LEGACY_SADDLE, 0),
-    STICK(false, -1, "minecraft", "stick", LEGACY_STICK, 0);
+    STICK(false, -1, "minecraft", "stick", LEGACY_STICK, 0),
 
+    SPRUCE_SAPLING(false, -1, "minecraft", "spruce_sapling", LEGACY_SAPLING, 1),
+    COCAO_BEANS(false, -1, "minecraft", "cocao_beans", LEGACY_INK_SACK, 3);
 
     private int id = 0;
     private String namespace;

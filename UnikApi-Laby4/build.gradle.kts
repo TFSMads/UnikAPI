@@ -12,7 +12,7 @@ java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 labyMod {
     defaultPackageName = "ml.volder" //change this to your main package name (used by all modules)
     addonInfo {
-        namespace = "unikapi"
+        namespace = "minecraft"
         displayName = "%name%"
         author = "%author%"
         description = "%description%"

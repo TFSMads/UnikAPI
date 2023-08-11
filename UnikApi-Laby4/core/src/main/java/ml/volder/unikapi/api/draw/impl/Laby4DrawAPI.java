@@ -121,7 +121,7 @@ public class Laby4DrawAPI implements DrawAPI {
 
   @Override
   public void bindTexture(ResourceLocation resourceLocation) {
-    this.boundTexture = Laby.references().resourceLocationFactory().create("unikapi", resourceLocation.getResourcePath());
+    this.boundTexture = Laby.references().resourceLocationFactory().create("minecraft", resourceLocation.getResourcePath());
     Laby.references().glStateBridge().bindTexture(boundTexture);
   }
 

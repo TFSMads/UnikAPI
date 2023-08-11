@@ -17,7 +17,7 @@ public class Laby4PlayerAPI implements PlayerAPI {
   }
 
   public void sendCommand(String command) {
-    Laby.references().chatExecutor().chat("/" + command);
+    Laby.references().chatExecutor().chat("/" + command, false);
   }
 
   @Override

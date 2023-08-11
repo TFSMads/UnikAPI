@@ -23,8 +23,9 @@ public interface ApiReferenceStorage {
     Class<? extends EventImpl> getVersionedDrawScreenEvent();
     Class<? extends EventImpl> getVersionedOpenSignEvent();
     Class<? extends EventImpl> getVersionedMainMenuOpenEvent();
-
     Class<? extends EventImpl> getVersionedSendMessageEvent();
+    Class<? extends EventImpl> getVersionedServerSwitchEvent();
+
 
     KeyMapper getVersionedKeyMapper();
 
