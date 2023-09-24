@@ -8,10 +8,9 @@ import ml.volder.unikapi.types.Material;
 import ml.volder.unikapi.types.ResourceLocation;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
+import java.util.function.Predicate;
 
 public interface DrawAPI {
 
@@ -21,6 +20,8 @@ public interface DrawAPI {
     int getScaledHeight();
     int getTextureWidth();
     int getTextureHeight();
+
+    default void registerTransporterBadgeRenderer(Predicate<UUID> shouldDraw) {}
     //endregion
 
 

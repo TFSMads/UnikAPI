@@ -50,6 +50,7 @@ public class Laby3DrawAPI_v1_8_9 implements DrawAPI {
     public int getTextureHeight() {
         return GL11.glGetTexLevelParameteri(GL11.GL_TEXTURE_2D,0, GL11.GL_TEXTURE_HEIGHT);
     }
+
     //endregion
 
     //region Texture related

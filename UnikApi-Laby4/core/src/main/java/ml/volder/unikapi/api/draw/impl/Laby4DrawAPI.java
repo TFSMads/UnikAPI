@@ -1,6 +1,8 @@
 package ml.volder.unikapi.api.draw.impl;
 
 import java.awt.*;
+import java.util.UUID;
+import java.util.function.Predicate;
 import ml.volder.core.generated.DefaultReferenceStorage;
 import ml.volder.unikapi.SupportedClient;
 import ml.volder.unikapi.api.draw.DrawAPI;
@@ -9,9 +11,13 @@ import ml.volder.unikapi.loader.Laby4Loader;
 import ml.volder.unikapi.types.Material;
 import ml.volder.unikapi.types.ResourceLocation;
 import net.labymod.api.Laby;
+import net.labymod.api.client.entity.player.badge.PositionType;
+import net.labymod.api.client.entity.player.badge.renderer.BadgeRenderer;
 import net.labymod.api.client.gfx.pipeline.util.MatrixTracker;
 import net.labymod.api.client.gfx.texture.GFXGetTextureParameter;
+import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.theme.Theme;
+import net.labymod.api.client.network.NetworkPlayerInfo;
 import net.labymod.api.client.render.draw.batch.BatchResourceRenderer;
 import net.labymod.api.client.render.font.text.TextRenderer;
 import net.labymod.api.client.render.font.text.TextRenderer.StringStart;
@@ -62,6 +68,37 @@ public class Laby4DrawAPI implements DrawAPI {
   public int getTextureHeight() {
     return GFXGetTextureParameter.TEXTURE_HEIGHT.getHandle();
   }
+
+  @Override
+  public void registerTransporterBadgeRenderer(Predicate<UUID> predicate) {
+    Laby.references().badgeRegistry().register("transporter-badge", PositionType.RIGHT_TO_NAME, new TransporterBadgeRenderer(predicate));
+  }
+
+  private class TransporterBadgeRenderer extends BadgeRenderer {
+    private final Icon icon;
+    private final Predicate<UUID> predicate;
+
+    public TransporterBadgeRenderer(Predicate<UUID> predicate) {
+      this.predicate = predicate;
+      this.icon = Icon.sprite(
+          net.labymod.api.client.resources.ResourceLocation.create("minecraft", "textures/badge.png"), 0, 0, 32, 32, 32, 32);
+    }
+
+    public void render(Stack stack, float x, float y, NetworkPlayerInfo player) {
+      if(predicate.test(player.profile().getUniqueId())){
+        this.icon.render(stack, x, y, 8.0F);
+      }
+    }
+
+    public boolean isVisible(NetworkPlayerInfo player) {
+      return true;
+    }
+
+    public int getSize() {
+      return 7;
+    }
+  }
+
   //endregion
 
   //region Texture related
