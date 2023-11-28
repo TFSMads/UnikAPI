@@ -16,7 +16,7 @@ labyMod {
         displayName = "%name%"
         author = "%author%"
         description = "%description%"
-        minecraftVersion = "*<1.20.1"
+        minecraftVersion = "*<1.20.2"
         version = "%version%"
     }
 
@@ -30,7 +30,8 @@ labyMod {
                 "1.19.2",
                 "1.19.3",
                 "1.19.4",
-                "1.20.1"
+                "1.20.1",
+                "1.20.2"
         ) { version, provider ->
             configureRun(provider, version)
         }
@@ -43,7 +44,7 @@ labyMod {
     }
 
     addonDev {
-        snapshotRelease()
+        productionRelease()
     }
 }
 
