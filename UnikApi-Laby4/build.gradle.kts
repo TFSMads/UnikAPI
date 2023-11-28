@@ -16,7 +16,7 @@ labyMod {
         displayName = "%name%"
         author = "%author%"
         description = "%description%"
-        minecraftVersion = "*"
+        minecraftVersion = "*<1.20.1"
         version = "%version%"
     }
 

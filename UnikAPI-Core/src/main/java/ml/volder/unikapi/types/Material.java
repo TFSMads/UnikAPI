@@ -46,7 +46,7 @@ public enum Material {
     @Deprecated
     SPONGE(true, 19, "minecraft", "sponge"),
     @Deprecated
-    GLASS(true, 20, "minecraft", "glass"),
+    LEGACY_GLASS(true, 20, "minecraft", "glass"),
     @Deprecated
     LAPIS_ORE(true, 21, "minecraft", "lapis_ore"),
     @Deprecated
@@ -791,7 +791,10 @@ public enum Material {
     STICK(false, -1, "minecraft", "stick", LEGACY_STICK, 0),
 
     SPRUCE_SAPLING(false, -1, "minecraft", "spruce_sapling", LEGACY_SAPLING, 1),
-    COCAO_BEANS(false, -1, "minecraft", "cocao_beans", LEGACY_INK_SACK, 3);
+    COCAO_BEANS(false, -1, "minecraft", "cocao_beans", LEGACY_INK_SACK, 3),
+
+    GLASS(false, -1, "minecraft", "glass", LEGACY_GLASS, 0);
+
 
     private int id = 0;
     private String namespace;
