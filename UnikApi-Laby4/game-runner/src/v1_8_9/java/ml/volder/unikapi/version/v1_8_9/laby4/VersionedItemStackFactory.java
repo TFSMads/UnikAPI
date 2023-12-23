@@ -17,6 +17,7 @@ public class VersionedItemStackFactory implements UnikItemStackFactory{
 
   @Inject
   public VersionedItemStackFactory() {
+    
   }
 
   public net.labymod.api.client.world.item.ItemStack create(ResourceLocation location, int count, int itemDamage) {

@@ -12,6 +12,7 @@ import net.labymod.api.client.gui.screen.ScreenInstance;
 import net.labymod.api.event.client.gui.screen.ScreenDisplayEvent;
 import net.labymod.api.models.Implements;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.AbstractSignEditScreen;
 import net.minecraft.client.gui.screens.inventory.SignEditScreen;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 
@@ -30,7 +31,7 @@ public class VersionedOpenSignEvent extends Laby4EventOpenSign {
       return;
     Screen guiScreen = (Screen) event.getScreen().wrap().getVersionedScreen();
     if(guiScreen instanceof SignEditScreen){
-      SignBlockEntity sign = (SignBlockEntity) ReflectionUtils.getPrivateFieldValueByType(guiScreen, SignEditScreen.class, SignBlockEntity.class);
+      SignBlockEntity sign = (SignBlockEntity) ReflectionUtils.getPrivateFieldValueByType(guiScreen, AbstractSignEditScreen.class, SignBlockEntity.class);
       OpenSignEvent openSignEvent = new OpenSignEvent(EventType.PRE, eventName, new VersionedTileEntitySign(sign));
       EventManager.callEvent(openSignEvent);
       if(openSignEvent.getNewScreen() != null && openSignEvent.getNewScreen().getHandle(Laby4GuiScreenImpl.class) != null){

@@ -8,32 +8,28 @@ public class DefaultLogger implements Logger{
     }
 
     @Override
-    public void finest(String string) {
-        logger.finest(string);
-    }
-
-    @Override
-    public void finer(String string) {
-        logger.finer(string);
-    }
-
-    @Override
-    public void fine(String string) {
-        logger.fine(string);
-    }
-
-    @Override
-    public void info(String string) {
-        logger.info(string);
-    }
-
-    @Override
-    public void warning(String string) {
-        logger.warning(string);
-    }
-
-    @Override
-    public void severe(String string) {
-        logger.severe(string);
+    public void log(LOG_LEVEL logLevel, String string) {
+        if(!isEnabled(logLevel))
+            return;
+        switch (logLevel) {
+            case FINEST:
+                logger.finest(string);
+                break;
+            case FINER:
+                logger.finer(string);
+                break;
+            case FINE:
+                logger.fine(string);
+                break;
+            case INFO:
+                logger.info(string);
+                break;
+            case WARNING:
+                logger.warning(string);
+                break;
+            case SEVERE:
+                logger.severe(string);
+                break;
+        }
     }
 }

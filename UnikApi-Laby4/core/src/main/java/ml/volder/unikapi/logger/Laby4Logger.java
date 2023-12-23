@@ -11,33 +11,28 @@ public class Laby4Logger implements Logger{
   }
 
   @Override
-  public void finest(String s) {
-    logger.debug(s);
-
-  }
-
-  @Override
-  public void finer(String s) {
-    logger.debug(s);
-  }
-
-  @Override
-  public void fine(String s) {
-    logger.debug(s);
-  }
-
-  @Override
-  public void info(String s) {
-    logger.info(s);
-  }
-
-  @Override
-  public void warning(String s) {
-    logger.warn(s);
-  }
-
-  @Override
-  public void severe(String s) {
-    logger.error(s);
+  public void log(LOG_LEVEL logLevel, String string) {
+    if(!isEnabled(logLevel))
+      return;
+    switch (logLevel) {
+      case FINEST:
+        logger.info(string);
+        break;
+      case FINER:
+        logger.info(string);
+        break;
+      case FINE:
+        logger.info(string);
+        break;
+      case INFO:
+        logger.info(string);
+        break;
+      case WARNING:
+        logger.warn(string);
+        break;
+      case SEVERE:
+        logger.error(string);
+        break;
+    }
   }
 }

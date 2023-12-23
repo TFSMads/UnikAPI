@@ -1,8 +1,10 @@
 package ml.volder.unikapi.event.events.opensignevent;
 
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.api.ApiManager;
 import ml.volder.unikapi.api.ApiProvider;
 import ml.volder.unikapi.api.ApiReferenceStorage;
+import ml.volder.unikapi.logger.Logger;
 import ml.volder.unikapi.wrappers.guiscreen.WrappedGuiScreen;
 import ml.volder.unikapi.event.*;
 import ml.volder.unikapi.wrappers.tileentitysign.WrappedTileEntitySign;
@@ -52,7 +54,7 @@ public class OpenSignEvent extends Event implements Cancellable {
                     eventImpl = klass.newInstance();
                     eventImpl.register();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
                 }
             }
         }

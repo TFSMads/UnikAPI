@@ -64,10 +64,7 @@ public class ModTextField {
                 StringSelection stringselection = new StringSelection(copyText);
                 Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringselection, (ClipboardOwner)null);
             }
-            catch (Exception var2)
-            {
-                ;
-            }
+            catch (Exception ignored) {}
         }
     }
 
@@ -82,10 +79,7 @@ public class ModTextField {
                 return (String)transferable.getTransferData(DataFlavor.stringFlavor);
             }
         }
-        catch (Exception var1)
-        {
-            ;
-        }
+        catch (Exception ignored) {}
 
         return "";
     }

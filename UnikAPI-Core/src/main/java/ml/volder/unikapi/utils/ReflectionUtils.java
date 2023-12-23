@@ -33,8 +33,7 @@ public class ReflectionUtils {
                     try {
                         fields[i].setAccessible(true);
                         return fields[i].get(o);
-                    } catch (IllegalAccessException var9) {
-                    }
+                    } catch (IllegalAccessException ignored) {}
                 }
 
                 ++counter;

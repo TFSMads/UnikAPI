@@ -1,10 +1,12 @@
 package ml.volder.unikapi.guisystem.elements;
 
 
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.datasystem.Data;
 import ml.volder.unikapi.datasystem.DataManager;
 import ml.volder.unikapi.api.draw.DrawAPI;
 import ml.volder.unikapi.keysystem.MouseButton;
+import ml.volder.unikapi.logger.Logger;
 import ml.volder.unikapi.types.ModColor;
 
 import java.util.function.Consumer;
@@ -20,8 +22,8 @@ public class DropDownElement<T> extends ControlElement {
         if (!configEntryName.isEmpty()) {
             try {
                 this.dropDownMenu.setSelected(loadValue.load(dataManager.getSettings().getData().has(configEntryName) ? dataManager.getSettings().getData().get(configEntryName).getAsString() : "ACTIONBAR_MESSAGES"));
-            } catch (Exception var7) {
-                var7.printStackTrace();
+            } catch (Exception e) {
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.FINE, e);
             }
         }
 
@@ -29,8 +31,8 @@ public class DropDownElement<T> extends ControlElement {
             try {
                 dataManager.getSettings().getData().addProperty(configEntryName, String.valueOf(accepted));
                 dataManager.save();
-            } catch (Exception var3) {
-                var3.printStackTrace();
+            } catch (Exception e) {
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.FINE, e);
             }
 
             if (DropDownElement.this.changeCallback != null) {

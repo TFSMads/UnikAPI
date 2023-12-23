@@ -8,34 +8,24 @@ public class Laby3Logger_v1_8_9 implements Logger{
     public Laby3Logger_v1_8_9(String name) {
         this.logger = LogManager.getLogger(name);
     }
-  
+
     @Override
-    public void finest(String s) {
-        logger.debug(s);
-    }
-  
-    @Override
-    public void finer(String s) {
-      logger.debug(s);
-    }
-  
-    @Override
-    public void fine(String s) {
-      logger.debug(s);
-    }
-  
-    @Override
-    public void info(String s) {
-      logger.info(s);
-    }
-  
-    @Override
-    public void warning(String s) {
-      logger.warn(s);
-    }
-  
-    @Override
-    public void severe(String s) {
-      logger.error(s);
+    public void log(LOG_LEVEL logLevel, String string) {
+        if(!isEnabled(logLevel))
+            return;
+        switch (logLevel) {
+            case FINEST:
+            case FINE:
+            case FINER:
+            case INFO:
+                logger.info(string);
+                break;
+            case WARNING:
+                logger.warn(string);
+                break;
+            case SEVERE:
+                logger.error(string);
+                break;
+        }
     }
   }

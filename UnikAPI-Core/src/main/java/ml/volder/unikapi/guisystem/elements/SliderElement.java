@@ -1,11 +1,13 @@
 package ml.volder.unikapi.guisystem.elements;
 
 
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.guisystem.ModTextures;
 import ml.volder.unikapi.datasystem.Data;
 import ml.volder.unikapi.datasystem.DataManager;
 import ml.volder.unikapi.api.draw.DrawAPI;
 import ml.volder.unikapi.keysystem.MouseButton;
+import ml.volder.unikapi.logger.Logger;
 import ml.volder.unikapi.types.ModColor;
 import ml.volder.unikapi.types.ResourceLocation;
 
@@ -40,8 +42,8 @@ public class SliderElement extends ControlElement{
             try {
                 configManager.getSettings().getData().addProperty(configEntryName, currentValue);
                 configManager.save();
-            } catch (Exception var3) {
-                var3.printStackTrace();
+            } catch (Exception e) {
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.FINE, e);
             }
 
             if (SliderElement.this.callback != null) {

@@ -15,6 +15,8 @@ import java.util.UUID;
 public class Laby3PlayerAPI_v1_8_9 implements PlayerAPI {
     @Override
     public void sendCommand(String command) {
+        if(LabyModCore.getMinecraft() == null || LabyModCore.getMinecraft().getPlayer() == null)
+            return;
         LabyModCore.getMinecraft().getPlayer().sendChatMessage("/" + command);
     }
 

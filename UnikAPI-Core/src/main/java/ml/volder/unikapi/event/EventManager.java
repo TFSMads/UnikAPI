@@ -1,5 +1,7 @@
 package ml.volder.unikapi.event;
 
+import ml.volder.unikapi.UnikAPI;
+import ml.volder.unikapi.logger.Logger;
 import ml.volder.unikapi.utils.ReflectionUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -13,10 +15,8 @@ public class EventManager {
                 if(event.getEventType() == handler.getEventType() && event.getClass().equals(handler.getEvent())){
                     handler.getMethod().invoke(handler.getInstance(), event);
                 }
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
             }
         }
         return Cancellable.class.isAssignableFrom(event.getClass()) && ((Cancellable) event).isCancelled();
@@ -34,12 +34,8 @@ public class EventManager {
                     List<Handler> handlerList = (List<Handler>) getHandlersMethod.invoke(null);
                     if(handlerList != null)
                         handlerList.add(handler);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
                 }
 
             }

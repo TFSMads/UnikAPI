@@ -1,15 +1,11 @@
 package ml.volder.unikapi;
 
-import com.google.gson.Gson;
 import ml.volder.unikapi.api.ApiReferenceStorage;
 import ml.volder.unikapi.api.player.PlayerAPI;
 import ml.volder.unikapi.logger.DefaultLogger;
 import ml.volder.unikapi.logger.Logger;
 
-import java.io.*;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
+import java.io.File;
 import java.util.UUID;
 
 public class UnikAPI {

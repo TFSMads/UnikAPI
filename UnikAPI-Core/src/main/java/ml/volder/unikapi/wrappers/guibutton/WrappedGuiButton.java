@@ -1,8 +1,10 @@
 package ml.volder.unikapi.wrappers.guibutton;
 
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.api.ApiManager;
 import ml.volder.unikapi.api.ApiProvider;
 import ml.volder.unikapi.api.ApiReferenceStorage;
+import ml.volder.unikapi.logger.Logger;
 
 import java.lang.reflect.Constructor;
 
@@ -25,7 +27,7 @@ public class WrappedGuiButton {
                 Constructor constructor = klass.getDeclaredConstructor(int.class, int.class, int.class, int.class, int.class, String.class, WrappedGuiButton.class);
                 impl = (IGuiButtonImpl) constructor.newInstance(buttonId, x, y, widthIn, heightIn, buttonText, this);
             } catch (Exception e) {
-                e.printStackTrace();
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.FINE, e);
             }
         }
     }

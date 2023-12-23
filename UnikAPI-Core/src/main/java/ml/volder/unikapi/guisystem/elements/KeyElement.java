@@ -1,12 +1,14 @@
 package ml.volder.unikapi.guisystem.elements;
 
 
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.datasystem.Data;
 import ml.volder.unikapi.datasystem.DataManager;
 import ml.volder.unikapi.api.draw.DrawAPI;
 import ml.volder.unikapi.keysystem.Key;
 import ml.volder.unikapi.keysystem.KeyMapper;
 import ml.volder.unikapi.keysystem.MouseButton;
+import ml.volder.unikapi.logger.Logger;
 import ml.volder.unikapi.types.ModColor;
 
 import java.util.function.Consumer;
@@ -64,9 +66,9 @@ public class KeyElement extends ControlElement {
         } else {
             try {
                 this.textField.setText(currentKey.getName());
-            } catch (Exception var2) {
+            } catch (Exception e) {
                 this.currentKey = Key.NONE;
-                var2.printStackTrace();
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.FINE, e);
             }
         }
 

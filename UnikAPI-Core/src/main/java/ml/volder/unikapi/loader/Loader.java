@@ -6,9 +6,12 @@ import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.keysystem.Key;
 import ml.volder.unikapi.keysystem.KeyMapper;
 import ml.volder.unikapi.keysystem.MouseButton;
+import ml.volder.unikapi.logger.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 
 public class Loader {
@@ -64,6 +67,7 @@ public class Loader {
             Method method = klass.getDeclaredMethod("onEnable", null);
             method.invoke(instance, null);
         } catch (Exception e) {
+            UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.SEVERE, e);
             UnikAPI.LOGGER.warning("Kunne ikke aktivere addonet!");
         }
     }
@@ -75,8 +79,8 @@ public class Loader {
             while((character = inputStream.read()) != -1) {
                 stringBuilder.append((char)character);
             }
-        } catch (IOException var4) {
-            var4.printStackTrace();
+        } catch (IOException e) {
+            UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
         }
         return stringBuilder.toString();
     }

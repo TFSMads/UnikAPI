@@ -1,5 +1,6 @@
 package ml.volder.unikapi.event.events.drawscreenevent;
 
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.api.ApiManager;
 import ml.volder.unikapi.api.ApiProvider;
 import ml.volder.unikapi.api.ApiReferenceStorage;
@@ -7,6 +8,7 @@ import ml.volder.unikapi.event.Event;
 import ml.volder.unikapi.event.EventImpl;
 import ml.volder.unikapi.event.EventType;
 import ml.volder.unikapi.event.Handler;
+import ml.volder.unikapi.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +73,7 @@ public class DrawScreenEvent extends Event {
                     eventImpl = klass.newInstance();
                     eventImpl.register();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
                 }
             }
         }

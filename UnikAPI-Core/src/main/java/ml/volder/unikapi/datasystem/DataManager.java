@@ -2,7 +2,9 @@ package ml.volder.unikapi.datasystem;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ml.volder.unikapi.UnikAPI;
 import ml.volder.unikapi.api.player.PlayerAPI;
+import ml.volder.unikapi.logger.Logger;
 import ml.volder.unikapi.utils.IOUtils;
 
 import java.io.*;
@@ -39,8 +41,8 @@ public class DataManager<T> {
             try {
                 this.file.createNewFile();
                 createdNewFile = true;
-            } catch (IOException var16) {
-                var16.printStackTrace();
+            } catch (IOException e) {
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
             }
         }
 
@@ -48,8 +50,8 @@ public class DataManager<T> {
 
         try {
             stream = new FileInputStream(this.file);
-        } catch (FileNotFoundException var15) {
-            var15.printStackTrace();
+        } catch (FileNotFoundException e) {
+            UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
         }
 
         try {
@@ -59,16 +61,16 @@ public class DataManager<T> {
             } else if (this.settings != null) {
                 this.save();
             }
-        } catch (Exception var17) {
-            var17.printStackTrace();
+        } catch (Exception e) {
+            UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
             if (!reload) {
                 this.loadConfig(true);
             }
         } finally {
             try {
                 stream.close();
-            } catch (IOException var14) {
-                var14.printStackTrace();
+            } catch (IOException e) {
+                UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
             }
 
         }
@@ -81,8 +83,8 @@ public class DataManager<T> {
             w.print(GSON.toJson(this.settings));
             w.flush();
             w.close();
-        } catch (Exception var2) {
-            var2.printStackTrace();
+        } catch (Exception e) {
+            UnikAPI.LOGGER.printStackTrace(Logger.LOG_LEVEL.INFO, e);
         }
 
     }

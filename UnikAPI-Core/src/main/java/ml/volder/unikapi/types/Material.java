@@ -711,7 +711,7 @@ public enum Material {
     COBBLESTONE(false, -1, "minecraft", "cobblestone", LEGACY_COBBLESTONE, 0),
     STONE_BRICK(false, -1, "minecraft", "stone_bricks", SMOOTH_BRICK, 0),
     DIRT(false, -1, "minecraft", "dirt", LEGACY_DIRT, 0),
-    GRASS(false, -1, "minecraft", "grass", LEGACY_GRASS, 0),
+    GRASS(false, -1, "minecraft", "grass_block", LEGACY_GRASS, 0),
     COAL(false, -1, "minecraft", "coal", LEGACY_COAL, 0),
     CHARCOAL(false, -1, "minecraft", "charcoal", LEGACY_COAL, 1),
     IRON_ORE(false, -1, "minecraft", "iron_ore", LEGACY_IRON_ORE, 0),
