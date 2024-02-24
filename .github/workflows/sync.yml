@@ -34,8 +34,6 @@ jobs:
         run: |
           git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*
           git checkout master -- UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/*
-          git mv UnikAPI-Core/src/main/java/ml/volder/unikapi/* ./UnikAPI-Core/
-          git mv UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/* ./UnikApi-Laby4/
           cp -a ./UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/. ./UnikAPI-Core/src/main/java/ml/volder/unikapi/
           rm -r ./UnikApi-Laby4/
           git add .
