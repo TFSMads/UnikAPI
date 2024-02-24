@@ -1,6 +1,7 @@
 package ml.volder.unikapi.widgets;
 
 import java.util.function.Function;
+import ml.volder.unikapi.loader.Laby4Loader;
 import ml.volder.unikapi.types.Material;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.hud.binding.category.HudWidgetCategory;
@@ -14,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class UnikHudWidget extends TextHudWidget {
 
+  private String namespace = Laby4Loader.namespace();
   private String prefix;
   private Function<String, String> getDisplayValue;
 
@@ -22,7 +24,7 @@ public class UnikHudWidget extends TextHudWidget {
     this.bindCategory(category);
     this.prefix = prefix;
     this.getDisplayValue = getDisplayValue;
-    this.setIcon(Icon.texture(ResourceLocation.create("minecraft", "unikapi/items/" + material.getPath(false) + ".png")));
+    this.setIcon(Icon.texture(ResourceLocation.create(namespace, "unikapi/items/" + material.getPath(false) + ".png")));
   }
 
   private TextLine line;

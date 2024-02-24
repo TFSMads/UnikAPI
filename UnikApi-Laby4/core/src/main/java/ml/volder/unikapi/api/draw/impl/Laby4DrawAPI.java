@@ -34,6 +34,7 @@ import net.labymod.api.util.bounds.Rectangle;
 @SupportedClient(clientBrand = "labymod4", minecraftVersion = "*")
 public class Laby4DrawAPI implements DrawAPI {
 
+  private String namespace = Laby4Loader.namespace();
   public static Stack CURRENT_RENDER_STACK;
   private static Laby4DrawAPI instance;
 
@@ -97,7 +98,7 @@ public class Laby4DrawAPI implements DrawAPI {
     public TransporterBadgeRenderer(Predicate<UUID> predicate) {
       this.predicate = predicate;
       this.icon = Icon.sprite(
-          net.labymod.api.client.resources.ResourceLocation.create("minecraft", "textures/badge.png"), 0, 0, 32, 32, 32, 32);
+          net.labymod.api.client.resources.ResourceLocation.create(namespace, "textures/badge.png"), 0, 0, 32, 32, 32, 32);
     }
 
     public void render(Stack stack, float x, float y, NetworkPlayerInfo player) {
@@ -174,7 +175,7 @@ public class Laby4DrawAPI implements DrawAPI {
 
   @Override
   public void bindTexture(ResourceLocation resourceLocation) {
-    this.boundTexture = Laby.references().resourceLocationFactory().create("minecraft", resourceLocation.getResourcePath());
+    this.boundTexture = Laby.references().resourceLocationFactory().create(namespace, resourceLocation.getResourcePath());
     Laby.references().glStateBridge().bindTexture(boundTexture);
   }
 

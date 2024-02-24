@@ -40,6 +40,12 @@ public class Laby4Loader extends LabyAddon<Laby4AddonConfig> {
     return instance.referenceStorageAccessor();
   }
 
+  public static String namespace() {
+    if(instance == null || instance.addonInfo() == null)
+      return "minecraft";
+    return instance.addonInfo().getNamespace();
+  }
+
   private static Laby4Loader instance;
 
   @Override
