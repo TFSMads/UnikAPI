@@ -56,3 +56,18 @@ jobs:
           git commit -m "Copy Gamerunner to laby4-gamerunner Branch"
           git push origin temp2:laby4-gamerunner --force
 
+      - name: Empty laby4-assets Branch
+        run: |
+          git checkout -B temp3
+          git rm -r .
+          git commit -m "Empty branch"
+          git push origin temp3:laby4-assets --force
+          
+      - name: Copy Assets to laby4-assets Branch
+        run: |
+          git checkout master -- UnikApi-Laby4/core/src/main/resources/assets/minecraft/*
+          mv ./UnikApi-Laby4/core/src/main/resources/assets/minecraft/* ./
+          git add .
+          git commit -m "Copy Assets to laby4-assets Branch"
+          git push origin temp3:laby4-assets --force
+
