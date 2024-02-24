@@ -23,13 +23,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Create laby4-unikapi Branch
-        run: git checkout -B laby4-unikapi
-
       - name: Copy Files to laby4-unikapi Branch
         run: |
+          git checkout -B temp
           mkdir -p UnikAPI-Core/src/main/java/ml/volder/unikapi
           cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
           git add .
           git commit -m "Copy files to laby4-unikapi branch"
-          git push origin laby4-unikapi
+          git push origin laby4-unikapi --force
