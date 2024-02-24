@@ -47,5 +47,5 @@ jobs:
           mv -f UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/* .
           git add .
           git commit -m "Copy UnikAPI-Laby4 to laby4-unikapi Branch"
-          git push origin temp:laby4-unikapi
+          git push origin temp:laby4-unikapi --force
 
