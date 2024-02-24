@@ -32,7 +32,6 @@ jobs:
           
       - name: Copy Files to laby4-unikapi Branch
         run: |
-          git checkout -b temp master         # Create and switch to the temp branch
           git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*  # Copy files from master to temp
           git add UnikAPI-Core/src/main/java/ml/volder/unikapi/*   # Add copied files to staging area
           git commit -m "Copy files from master to temp branch"     # Commit changes
