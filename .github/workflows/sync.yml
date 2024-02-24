@@ -23,19 +23,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Ensure there are no staged changes before proceeding
-      - name: Check for Staged Changes
-        run: git diff-index --quiet HEAD || (git status && false)
-
-      # Commit the staged changes
-      - name: Commit Staged Changes
-        run: git commit -am "Committing staged changes" || echo "No changes to commit"
-
-      - name: Create laby4-unikapi Branch
-        run: git show-ref --verify --quiet refs/heads/laby4-unikapi || git checkout --orphan laby4-unikapi
-
       - name: Empty laby4-unikapi Branch
         run: |
+          ls 
           git rm -r .
           git commit -m "Empty branch"
           git push origin laby4-unikapi --force
