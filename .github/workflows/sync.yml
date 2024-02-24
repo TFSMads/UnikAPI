@@ -41,5 +41,18 @@ jobs:
           git commit -m "Copy UnikAPI to laby4-unikapi Branch"
           git push origin temp:laby4-unikapi --force
         
-
+      - name: Empty laby4-gamerunner Branch
+        run: |
+          git checkout -B temp2
+          git rm -r .
+          git commit -m "Empty branch"
+          git push origin temp2:laby4-gamerunner --force
+          
+      - name: Copy Gamerunner to laby4-gamerunner Branch
+        run: |
+          git checkout master -- UnikApi-Laby4/game-runner/src/*
+          mv ./UnikApi-Laby4/game-runner/src/* ./
+          git add .
+          git commit -m "Copy Gamerunner to laby4-gamerunner Branch"
+          git push origin temp2:laby4-gamerunner --force
 
