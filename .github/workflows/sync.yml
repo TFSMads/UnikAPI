@@ -41,7 +41,6 @@ jobs:
           # git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*
           git checkout master -- UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/*
           shopt -s extglob  # Enable extended pattern matching
-          rm -r !(UnikAPI-Core|UnikApi-Laby4)
           # mv -f UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
           mv -f UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/* .
           git add .
