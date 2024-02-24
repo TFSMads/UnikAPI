@@ -28,7 +28,7 @@ jobs:
           git checkout -B temp
           git rm -r .
           git commit -m "Empty branch"
-          git push origin temp1:laby4-unikapi --force
+          git push origin temp:laby4-unikapi --force
           
       - name: Copy Files to laby4-unikapi Branch
         run: |
