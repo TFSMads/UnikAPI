@@ -65,8 +65,8 @@ jobs:
           
       - name: Copy Assets to laby4-assets Branch
         run: |
-          git checkout master -- UnikApi-Laby4/core/src/main/resources/assets/minecraft/*
-          mv ./UnikApi-Laby4/core/src/main/resources/assets/minecraft/* ./
+          git checkout master -- UnikApi-Laby4/core/src/main/resources/assets/minecraft/unikapi/*
+          mv ./UnikApi-Laby4/core/src/main/resources/assets/minecraft/unikapi/* ./
           git add .
           git commit -m "Copy Assets to laby4-assets Branch"
           git push origin temp3:laby4-assets --force
