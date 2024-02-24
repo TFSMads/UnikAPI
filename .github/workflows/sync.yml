@@ -30,4 +30,4 @@ jobs:
           cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
           git add .
           git commit -m "Copy files to laby4-unikapi branch"
-          git push origin laby4-unikapi --force
+          git push origin temp:laby4-unikapi --force
