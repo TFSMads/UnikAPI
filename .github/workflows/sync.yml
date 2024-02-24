@@ -32,7 +32,7 @@ jobs:
           
       - name: Copy Files to laby4-unikapi Branch
         run: |
-          git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*
+          git checkout master
           git add UnikAPI-Core/src/main/java/ml/volder/unikapi/*
           git commit -m "Copy files from master to laby4-unikapi branch"
           git push origin master:laby4-unikapi --force
