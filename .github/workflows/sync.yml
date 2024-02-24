@@ -23,6 +23,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Create laby4-unikapi Branch
+        run: git show-ref --verify --quiet refs/heads/laby4-unikapi || git checkout --orphan laby4-unikapi
+
       - name: Empty laby4-unikapi Branch
         run: |
           git rm -r .
