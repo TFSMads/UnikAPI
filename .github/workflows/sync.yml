@@ -1,0 +1,26 @@
+name: Sync Files with master Branch to laby4-unikapi
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  sync-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create laby4-unikapi Branch
+        run: git checkout -B laby4-unikapi
+
+      - name: Copy Files to laby4-unikapi Branch
+        run: |
+          mkdir -p UnikAPI-Core/src/main/java/ml/volder/unikapi
+          cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* ./UnikAPI-Core/src/main/java/ml/volder/unikapi/
+          git add .
+          git commit -m "Copy files to laby4-unikapi branch"
+          git push origin laby4-unikapi
