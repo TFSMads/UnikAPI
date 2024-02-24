@@ -43,7 +43,7 @@ jobs:
           git checkout master -- UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/*
           shopt -s extglob  # Enable extended pattern matching
           rm -r !(UnikApi-Laby4)
-          mv -f UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
+          mv -f -r UnikAPI-Laby4/src/main/java/ml/volder/unikapi/* .
           git add .
           git commit -m "Copy UnikAPI-Laby4 to laby4-unikapi Branch"
           git push origin temp:laby4-unikapi --force
