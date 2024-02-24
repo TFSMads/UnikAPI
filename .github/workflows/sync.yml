@@ -40,6 +40,7 @@ jobs:
           
       - name: Copy UnikAPI-Laby4 to laby4-unikapi Branch
         run: |
+          git checkout -B temp2
           # git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*
           git checkout master -- UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/*
           shopt -s extglob  # Enable extended pattern matching
@@ -48,5 +49,5 @@ jobs:
           mv -f UnikApi-Laby4/core/src/main/java/ml/volder/unikapi/* .
           git add .
           git commit -m "Copy UnikAPI-Laby4 to laby4-unikapi Branch"
-          git push origin temp:laby4-unikapi
+          git push origin temp2:laby4-unikapi
 
