@@ -20,7 +20,7 @@ jobs:
       - name: Copy Files to laby4-unikapi Branch
         run: |
           mkdir -p UnikAPI-Core/src/main/java/ml/volder/unikapi
-          cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* ./UnikAPI-Core/src/main/java/ml/volder/unikapi/
+          cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
           git add .
           git commit -m "Copy files to laby4-unikapi branch"
           git push origin laby4-unikapi
