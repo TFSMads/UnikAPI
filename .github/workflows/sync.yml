@@ -25,16 +25,14 @@ jobs:
 
       - name: Empty laby4-unikapi Branch
         run: |
-          git checkout -B temp1
+          git checkout -B temp
           git rm -r .
           git commit -m "Empty branch"
           git push origin temp1:laby4-unikapi --force
           
       - name: Copy Files to laby4-unikapi Branch
         run: |
-          git checkout -B temp
-          mkdir -p UnikAPI-Core/src/main/java/ml/volder/unikapi
-          cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
+          git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*
           git add .
-          git commit -m "Copy files to laby4-unikapi branch"
-          git push origin temp:laby4-unikapi --force
+          git commit -m "Copy files from master to laby4-unikapi branch"
+          git push origin laby4-unikapi --force
