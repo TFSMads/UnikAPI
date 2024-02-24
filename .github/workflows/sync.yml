@@ -35,4 +35,4 @@ jobs:
           git checkout master -- UnikAPI-Core/src/main/java/ml/volder/unikapi/*
           git add .
           git commit -m "Copy files from master to laby4-unikapi branch"
-          git push origin laby4-unikapi --force
+          git push origin master:laby4-unikapi --force
