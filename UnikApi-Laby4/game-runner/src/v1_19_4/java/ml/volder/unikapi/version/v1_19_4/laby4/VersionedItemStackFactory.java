@@ -6,7 +6,7 @@ import ml.volder.unikapi.laby4.UnikItemStackFactory;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
 import net.labymod.api.models.Implements;
-import net.labymod.v1_19_4.client.util.ItemUtil;
+import net.labymod.v1_19_4.client.util.MinecraftUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
@@ -23,7 +23,7 @@ public class VersionedItemStackFactory implements UnikItemStackFactory{
     net.minecraft.world.item.ItemStack stack = new net.minecraft.world.item.ItemStack(item);
     stack.setCount(count);
     stack.setDamageValue(itemDamage);
-    return ItemUtil.getLabyItemStack(stack);
+    return MinecraftUtil.fromMinecraft(stack);
   }
 
 }

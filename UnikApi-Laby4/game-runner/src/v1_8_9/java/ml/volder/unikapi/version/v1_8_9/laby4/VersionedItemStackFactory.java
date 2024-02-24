@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import ml.volder.unikapi.laby4.UnikItemStackFactory;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.Implements;
-import net.labymod.v1_8_9.client.util.ItemUtil;
+import net.labymod.v1_8_9.client.util.MinecraftUtil;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
@@ -23,12 +23,12 @@ public class VersionedItemStackFactory implements UnikItemStackFactory{
   public net.labymod.api.client.world.item.ItemStack create(ResourceLocation location, int count, int itemDamage) {
     Item item = Item.itemRegistry.getObject(location.getMinecraftLocation());
     if (item == null) {
-      return ItemUtil.getLabyItemStack(FALLBACK_ITEM);
+      return MinecraftUtil.fromMinecraft(FALLBACK_ITEM);
     } else {
       net.minecraft.item.ItemStack stack = new net.minecraft.item.ItemStack(item);
       stack.setItemDamage(itemDamage);
       stack.stackSize = count;
-      return ItemUtil.getLabyItemStack(stack);
+      return MinecraftUtil.fromMinecraft(stack);
     }
   }
 

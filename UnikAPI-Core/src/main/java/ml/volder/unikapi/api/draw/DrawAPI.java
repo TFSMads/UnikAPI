@@ -22,6 +22,44 @@ public interface DrawAPI {
     int getTextureHeight();
 
     default void registerTransporterBadgeRenderer(Predicate<UUID> shouldDraw) {}
+
+    default void drawHoverText(List<String> text, int x, int y) {
+        int boxWidth = 0;
+        for (Iterator<String> lineIterator = text.iterator(); lineIterator.hasNext(); ) {
+            String lineText = lineIterator.next();
+            int lineWidth = getStringWidth(lineText);
+            if (lineWidth > boxWidth)
+                boxWidth = lineWidth;
+        }
+        int startX = x + 12;
+        int startY = y - 12;
+        int lvt_8_1_ = 8;
+        if (text.size() > 1)
+            lvt_8_1_ += 2 + (text.size() - 1) * 10;
+        if (startX + boxWidth > getScaledWidth())
+            startX -= 28 + boxWidth;
+        if (startY + lvt_8_1_ + 6 > getScaledHeight())
+            startY = getScaledHeight() - lvt_8_1_ - 6;
+        int lvt_9_1_ = -267386864;
+        drawGradientRect(startX - 3, startY - 4, startX + boxWidth + 3, startY - 3, lvt_9_1_, lvt_9_1_);
+        drawGradientRect(startX - 3, startY + lvt_8_1_ + 3, startX + boxWidth + 3, startY + lvt_8_1_ + 4, lvt_9_1_, lvt_9_1_);
+        drawGradientRect(startX - 3, startY - 3, startX + boxWidth + 3, startY + lvt_8_1_ + 3, lvt_9_1_, lvt_9_1_);
+        drawGradientRect(startX - 4, startY - 3, startX - 3, startY + lvt_8_1_ + 3, lvt_9_1_, lvt_9_1_);
+        drawGradientRect(startX + boxWidth + 3, startY - 3, startX + boxWidth + 4, startY + lvt_8_1_ + 3, lvt_9_1_, lvt_9_1_);
+        int lvt_10_1_ = 1347420415;
+        int lvt_11_1_ = (lvt_10_1_ & 0xFEFEFE) >> 1 | lvt_10_1_ & 0xFF000000;
+        drawGradientRect(startX - 3, startY - 3 + 1, startX - 3 + 1, startY + lvt_8_1_ + 3 - 1, lvt_10_1_, lvt_11_1_);
+        drawGradientRect(startX + boxWidth + 2, startY - 3 + 1, startX + boxWidth + 3, startY + lvt_8_1_ + 3 - 1, lvt_10_1_, lvt_11_1_);
+        drawGradientRect(startX - 3, startY - 3, startX + boxWidth + 3, startY - 3 + 1, lvt_10_1_, lvt_10_1_);
+        drawGradientRect(startX - 3, startY + lvt_8_1_ + 2, startX + boxWidth + 3, startY + lvt_8_1_ + 3, lvt_11_1_, lvt_11_1_);
+        for (int lvt_12_1_ = 0; lvt_12_1_ < text.size(); lvt_12_1_++) {
+            String lvt_13_1_ = text.get(lvt_12_1_);
+            drawStringWithShadow(lvt_13_1_, startX, startY, -1);
+            if (lvt_12_1_ == 0)
+                startY += 2;
+            startY += 10;
+        }
+    }
     //endregion
 
 

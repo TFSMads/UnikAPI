@@ -272,7 +272,7 @@ public enum Material {
     @Deprecated
     TRIPWIRE(true, 132, "minecraft", "tripwire_hook"),
     @Deprecated
-    EMERALD_BLOCK(true, 133, "minecraft", "emerald_block"),
+    LEGACY_EMERALD_BLOCK(true, 133, "minecraft", "emerald_block"),
     @Deprecated
     SPRUCE_WOOD_STAIRS(true, 134, "minecraft", "spruce_stairs"),
     @Deprecated
@@ -699,6 +699,7 @@ public enum Material {
     DIODE(false, -1, "minecraft", "repeater", LEGACY_DIODE, 0),
     WATCH(false, -1, "minecraft", "clock", LEGACY_WATCH, 0),
     EMERALD(false, -1, "minecraft", "emerald", LEGACY_EMERALD, 0),
+    EMERALD_BLOCK(false, -1, "minecraft", "emerald_block", LEGACY_EMERALD_BLOCK, 0),
     PAINTING(false, -1, "minecraft", "painting", LEGACY_PAINTING , 0),
     PAPER(false, -1, "minecraft", "paper", LEGACY_PAPER , 0),
     REDSTONE_LAMP(false, -1, "minecraft", "redstone_lamp", REDSTONE_LAMP_OFF, 0),
