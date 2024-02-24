@@ -23,10 +23,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Empty laby4-unikapi Branch
+        run: |
+          git rm -r .
+          git commit -m "Empty branch"
+          git push origin laby4-unikapi --force
+
       - name: Copy Files to laby4-unikapi Branch
         run: |
           git checkout -B temp
-          git rm -r .
           mkdir -p UnikAPI-Core/src/main/java/ml/volder/unikapi
           cp -R UnikAPI-Core/src/main/java/ml/volder/unikapi/* .
           git add .
