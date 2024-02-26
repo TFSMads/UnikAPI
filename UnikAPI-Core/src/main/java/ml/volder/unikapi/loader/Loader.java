@@ -47,7 +47,7 @@ public class Loader {
     }
 
     public static void onEnable() {
-        InputStream inputStream = ClassLoader.getSystemResourceAsStream("loaderInfo.json");
+        InputStream inputStream = ClassLoader.getSystemResourceAsStream("transporter/loaderInfo.json");
         if(inputStream == null){
             UnikAPI.LOGGER.warning("Kunne ikke finde loaderInfo.json - Kunne ikke aktivere dit addon!");
             return;

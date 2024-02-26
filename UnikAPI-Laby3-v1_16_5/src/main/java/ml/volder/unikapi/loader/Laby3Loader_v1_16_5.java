@@ -18,7 +18,7 @@ public class Laby3Loader_v1_16_5 extends LabyModAddon {
         UnikAPI.LOGGER = new Laby3Logger_v1_16_5("UnikAPI");
         UnikAPI.initAPI("labymod3", null, Minecraft.getInstance().getVersion().replace("LabyMod-3-", ""));
         UnikAPI.registerReferenceStorage(ApiReferenceStorageLaby3_v1_16_5.getInstance());
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("loaderInfo.json");
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("transporter/loaderInfo.json");
         Loader.onEnable(inputStream);
     }
 

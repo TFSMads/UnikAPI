@@ -57,7 +57,7 @@ public class Laby4Loader extends LabyAddon<Laby4AddonConfig> {
     UnikAPI.initAPI("labymod4", null, "*");
     UnikAPI.registerReferenceStorage(ApiReferenceStorageLaby4.getInstance());
     ModuleSystem.setModuleManager(new Laby4ModuleManager());
-    Loader.onEnable(Laby.labyAPI().addonService().getAddon(this.getClass()).get().getClassLoader().getResourceAsStream("loaderInfo.json"));
+    Loader.onEnable(Laby.labyAPI().addonService().getAddon(this.getClass()).get().getClassLoader().getResourceAsStream("transporter/loaderInfo.json"));
     Laby.labyAPI().eventBus().registerListener(this);
 
     //Redirect addon settings to UnikAPI addon settings
