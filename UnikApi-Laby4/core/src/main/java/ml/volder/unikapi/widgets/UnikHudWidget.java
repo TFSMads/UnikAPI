@@ -36,9 +36,9 @@ public class UnikHudWidget extends TextHudWidget {
   }
 
   @Override
-  public void onTick() {
+  public void onTick(boolean isInEditor) {
     this.line.updateAndFlush(getDisplayValue.apply(""));
-    if (ModuleSystem.shouldRenderModules()) {
+    if (ModuleSystem.shouldRenderModules() || isInEditor) {
       this.line.setState(State.VISIBLE);
     } else {
       this.line.setState(State.HIDDEN);

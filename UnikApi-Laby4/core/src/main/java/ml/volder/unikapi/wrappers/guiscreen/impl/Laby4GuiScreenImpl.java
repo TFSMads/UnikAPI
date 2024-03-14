@@ -103,6 +103,11 @@ public class Laby4GuiScreenImpl extends LabyScreen implements IGuiScreenImpl {
   }
 
   @Override
+  public boolean renderBackground(Stack stack, int mouseX, int mouseY, float tickDelta) {
+    return true;
+  }
+
+  @Override
   public void renderOverlay(Stack stack, MutableMouse mouse, float partialTicks) {
 
   }
